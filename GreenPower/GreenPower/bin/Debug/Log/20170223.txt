@@ -1,0 +1,76 @@
+[ERROR] 2017/02/23 09:12:55 Message sent successfully
+[ERROR] 2017/02/23 09:19:29 Message sent successfully
+[ERROR] 2017/02/23 09:20:26 Message sent successfully
+[ERROR] 2017/02/23 09:21:51 Message sent successfully
+[ERROR] 2017/02/23 09:33:07 Message sent successfully
+[ERROR] 2017/02/23 09:34:19 Message sent successfully
+[ERROR] 2017/02/23 09:38:48 Message sent successfully
+[ERROR] 2017/02/23 09:41:05 Message sent successfully
+[     ] 2017/02/23 09:42:21   DataTableToExcel:  Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+[ERROR] 2017/02/23 09:42:36 Message sent successfully
+[     ] 2017/02/23 09:45:57   DataTableToExcel:  Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+[ERROR] 2017/02/23 09:46:02 Message sent successfully
+[     ] 2017/02/23 09:46:27   DataTableToExcel:  Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+[ERROR] 2017/02/23 09:46:33 Message sent successfully
+[     ] 2017/02/23 09:47:03   DataTableToExcel:  Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+[ERROR] 2017/02/23 09:47:08 Message sent successfully
+[     ] 2017/02/23 09:47:51   DataTableToExcel:  Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+[ERROR] 2017/02/23 09:47:56 Message sent successfully
+[     ] 2017/02/23 11:41:46   DataTableToExcel:  Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+[ERROR] 2017/02/23 11:41:52 Message sent successfully
+[     ] 2017/02/23 11:51:29   DataTableToExcel:  Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+[ERROR] 2017/02/23 11:51:34 Message sent successfully
+[     ] 2017/02/23 12:02:26   DataTableToExcel:  Object reference not set to an instance of an object.
+[ERROR] 2017/02/23 12:02:31 Message sent successfully
+[     ] 2017/02/23 12:05:26   DataTableToExcel:  Object reference not set to an instance of an object.
+[ERROR] 2017/02/23 12:05:31 Message sent successfully
+[     ] 2017/02/23 12:10:11   DataTableToExcel:  Object reference not set to an instance of an object.
+[ERROR] 2017/02/23 12:10:16 Message sent successfully
+[     ] 2017/02/23 12:11:33   DataTableToExcel:  Object reference not set to an instance of an object.
+[ERROR] 2017/02/23 12:11:38 Message sent successfully
+[     ] 2017/02/23 12:14:33   DataTableToExcel:  Object reference not set to an instance of an object.
+[ERROR] 2017/02/23 12:14:38 Message sent successfully
+[     ] 2017/02/23 12:15:19   DataTableToExcel:  Object reference not set to an instance of an object.
+[ERROR] 2017/02/23 12:15:24 Message sent successfully
+[     ] 2017/02/23 12:16:20   DataTableToExcel:  Object reference not set to an instance of an object.
+[ERROR] 2017/02/23 12:16:25 Message sent successfully
+[     ] 2017/02/23 12:19:35   DataTableToExcel:  Object reference not set to an instance of an object.
+[ERROR] 2017/02/23 12:19:40 Message sent successfully
+[     ] 2017/02/23 12:20:47   DataTableToExcel:  Object reference not set to an instance of an object.
+[     ] 2017/02/23 12:20:47 Could not find file 'D:\Workshop\Projects_Git_stella\schedule-job\GreenPower\GreenPower\bin\Debug\2017-01對比資料.xlsx'.
+[     ] 2017/02/23 12:22:18   DataTableToExcel:  Object reference not set to an instance of an object.
+[     ] 2017/02/23 12:22:18 Could not find file 'D:\Workshop\Projects_Git_stella\schedule-job\GreenPower\GreenPower\bin\Debug\2017-01對比資料.xlsx'.
+[     ] 2017/02/23 12:30:33   DataTableToExcel:  Object reference not set to an instance of an object.
+[     ] 2017/02/23 12:30:33 Could not find file 'D:\Workshop\Projects_Git_stella\schedule-job\GreenPower\GreenPower\bin\Debug\2017-01對比資料.xlsx'.
+[     ] 2017/02/23 12:35:33   DataTableToExcel:  Object reference not set to an instance of an object.
+[     ] 2017/02/23 12:35:33 文件路徑不存在!
+[     ] 2017/02/23 12:37:11   DataTableToExcel:  Object reference not set to an instance of an object.
+[     ] 2017/02/23 12:44:33   DataTableToExcel:  Object reference not set to an instance of an object.
+[ERROR] 2017/02/23 13:09:38 Message sent successfully
+[ERROR] 2017/02/23 13:12:17 Message sent successfully
+[ERROR] 2017/02/23 13:13:55 Message sent successfully
+[ERROR] 2017/02/23 13:14:44 Message sent successfully
+[ERROR] 2017/02/23 13:15:36 Message sent successfully
+[ERROR] 2017/02/23 13:17:07 Message sent successfully
+[     ] 2017/02/23 13:20:00   DataTableToExcel:  The process cannot access the file 'D:\Workshop\Projects_Git_stella\schedule-job\GreenPower\GreenPower\bin\Debug\Template.xlsx' because it is being used by another process.
+[     ] 2017/02/23 13:20:01 文件路徑不存在!
+[ERROR] 2017/02/23 13:21:15 Message sent successfully
+[ERROR] 2017/02/23 13:29:45 Message sent successfully
+[ERROR] 2017/02/23 13:31:03 Message sent successfully
+[ERROR] 2017/02/23 13:31:42 Message sent successfully
+[ERROR] 2017/02/23 13:33:23 Message sent successfully
+[ERROR] 2017/02/23 13:33:48 Message sent successfully
+[ERROR] 2017/02/23 13:37:25 Message sent successfully
+[ERROR] 2017/02/23 13:39:17 Message sent successfully
+[     ] 2017/02/23 13:46:46   DataTableToExcel:  The process cannot access the file 'D:\Workshop\Projects_Git_stella\schedule-job\GreenPower\GreenPower\bin\Debug\2017-01對比資料.xlsx' because it is being used by another process.
+[     ] 2017/02/23 13:46:46 文件路徑不存在!
+[ERROR] 2017/02/23 13:47:17 Message sent successfully
+[ERROR] 2017/02/23 13:48:35 Message sent successfully
+[ERROR] 2017/02/23 13:52:53 Message sent successfully

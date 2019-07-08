@@ -1,0 +1,6 @@
+[ERROR] 2017/02/22 15:55:53 Message sent successfully
+[     ] 2017/02/22 16:03:09   DataTableToExcel:  A column named '區間' already belongs to this DataTable.
+[ERROR] 2017/02/22 16:03:14 Message sent successfully
+[     ] 2017/02/22 16:04:16   DataTableToExcel:  A column named '區間' already belongs to this DataTable.
+[ERROR] 2017/02/22 16:04:21 Message sent successfully
+[ERROR] 2017/02/22 16:05:13 Message sent successfully
