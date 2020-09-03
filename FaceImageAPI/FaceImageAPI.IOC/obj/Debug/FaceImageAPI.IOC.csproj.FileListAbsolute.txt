@@ -1,0 +1,17 @@
+D:\Desktop\FaceImageAPI\FaceImageAPI.IOC\bin\Debug\FaceImageAPI.IOC.dll
+D:\Desktop\FaceImageAPI\FaceImageAPI.IOC\bin\Debug\FaceImageAPI.IOC.pdb
+D:\Desktop\FaceImageAPI\FaceImageAPI.IOC\bin\Debug\Autofac.dll
+D:\Desktop\FaceImageAPI\FaceImageAPI.IOC\bin\Debug\Autofac.xml
+D:\Desktop\FaceImageAPI\FaceImageAPI.IOC\obj\Debug\FaceImageAPI.Ioc.csproj.CoreCompileInputs.cache
+D:\Desktop\FaceImageAPI\FaceImageAPI.IOC\obj\Debug\FaceImageAPI.Ioc.csproj.CopyComplete
+D:\Desktop\FaceImageAPI\FaceImageAPI.IOC\obj\Debug\FaceImageAPI.IOC.dll
+D:\Desktop\FaceImageAPI\FaceImageAPI.IOC\obj\Debug\FaceImageAPI.IOC.pdb
+D:\Desktop\FaceImageAPI\FaceImageAPI.IOC\obj\Debug\FaceImageAPI.IOC.csprojAssemblyReference.cache
+D:\Desktop\FaceImageAPI\FaceImageAPI.IOC\bin\Debug\FaceImageAPI.Services.dll
+D:\Desktop\FaceImageAPI\FaceImageAPI.IOC\bin\Debug\FaceImageAPI.Entity.dll
+D:\Desktop\FaceImageAPI\FaceImageAPI.IOC\bin\Debug\Newtonsoft.Json.dll
+D:\Desktop\FaceImageAPI\FaceImageAPI.IOC\bin\Debug\FaceImageAPI.Services.pdb
+D:\Desktop\FaceImageAPI\FaceImageAPI.IOC\bin\Debug\FaceImageAPI.Entity.pdb
+D:\Desktop\FaceImageAPI\FaceImageAPI.IOC\bin\Debug\Newtonsoft.Json.xml
+D:\Desktop\FaceImageAPI\FaceImageAPI.IOC\bin\Debug\FaceImageAPI.Repository.dll
+D:\Desktop\FaceImageAPI\FaceImageAPI.IOC\bin\Debug\FaceImageAPI.Repository.pdb

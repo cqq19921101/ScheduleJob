@@ -1,0 +1,5 @@
+D:\Desktop\FaceImageAPI\FaceImageAPI.Interface\bin\Debug\FaceImageAPI.Interface.dll
+D:\Desktop\FaceImageAPI\FaceImageAPI.Interface\bin\Debug\FaceImageAPI.Interface.pdb
+D:\Desktop\FaceImageAPI\FaceImageAPI.Interface\obj\Debug\FaceImageAPI.Interface.csproj.CoreCompileInputs.cache
+D:\Desktop\FaceImageAPI\FaceImageAPI.Interface\obj\Debug\FaceImageAPI.Interface.dll
+D:\Desktop\FaceImageAPI\FaceImageAPI.Interface\obj\Debug\FaceImageAPI.Interface.pdb
