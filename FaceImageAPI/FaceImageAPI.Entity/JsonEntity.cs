@@ -176,6 +176,11 @@ namespace FaceImageAPI.Entity
         {
         }
 
+        public class Photo
+        {
+            public string subjectid { get; set; }
+        }
+
         public class Root
         {
             /// <summary>
@@ -189,6 +194,10 @@ namespace FaceImageAPI.Entity
             /// <summary>
             /// 
             /// </summary>
+            public Photo photo { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
             public Page page { get; set; }
             /// <summary>
             /// 
@@ -196,4 +205,5 @@ namespace FaceImageAPI.Entity
             public int timecost { get; set; }
         }
     }
+
 }

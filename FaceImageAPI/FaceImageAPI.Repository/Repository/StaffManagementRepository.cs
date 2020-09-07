@@ -1,11 +1,14 @@
-﻿using FaceImageAPI.Repository.IRepository;
+﻿using FaceImageAPI.Domain.DB;
+using FaceImageAPI.Entity;
+using FaceImageAPI.Helper;
+using FaceImageAPI.Repository.IRepository;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FaceImageAPI.Repository.Repository
 {
@@ -14,87 +17,85 @@ namespace FaceImageAPI.Repository.Repository
     /// </summary>
     public class StaffManagementRepository : IStaffManagementRepository
     {
+        /// <summary>
+        /// 上正式环境前 同步人脸库中的所有符合条件的数据
+        /// </summary>
+        /// <returns></returns>
+        public List<v_smartpark_emp> GetUserDataBeforePRD()
+        {
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append(@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
+                            where EmpName = '陈乾乾'
+                            and LDate IS NULL and FileData IS Not Null");
+            using (var db = new DBContext())
+            {
+                return db.Database.SqlQuery<v_smartpark_emp>(sb.ToString()).ToList();//
+            }
+        }
 
         /// <summary>
-        /// Post方式创建用户并上传人脸库图片
+        /// 抓取当天的入职员工
         /// </summary>
-        /// <param name="url">Server Address</param>
-        /// <param name="Token">Token</param>
-        /// <param name="timeOut">设定超时时间</param>
-        /// <param name="FileName">图片名称</param>
-        /// <param name="FilePath">图片路径</param>
-        /// <param name="strdic">Body参数</param>
         /// <returns></returns>
-        public string PostCreateUpLoadUser(string url, string Token, int timeOut, string FileName, string FilePath, Dictionary<string, string> strdic)
+        public List<v_smartpark_emp> GetEntryEmp()
         {
-            string ResponseResult;
-            MemoryStream ms = new MemoryStream();
-            string boundary = "---------------" + DateTime.Now.Ticks.ToString("x");
+            string NDate = DateTime.Now.ToString("yyyy-MM-dd");
+            StringBuilder sb = new StringBuilder();
+            sb.Append($@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
+                            where CONVERT(varchar(10),JDate,120) = {NDate}
+                            and FileData is not null    ");
+            using (var db = new DBContext())
+            {
+                return  db.Database.SqlQuery<v_smartpark_emp>(sb.ToString()).ToList();//
+            }
+        }
 
-            //开始标识
-            var beginBoundary = Encoding.ASCII.GetBytes("--" + boundary + "\r\n");
-            //结束标识
-            var endBoundary = Encoding.ASCII.GetBytes("--" + boundary + "--\r\n");
+        /// <summary>
+        /// 抓取当天的离职员工
+        /// </summary>
+        /// <returns></returns>
+        public List<v_smartpark_emp> GetLeaveEmp()
+        {
+            string NDate = DateTime.Now.ToString("yyyy -MM-dd");
+            StringBuilder sb = new StringBuilder();
+            //sb.Append($@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
+            //             where CONVERT(varchar(10),LDate,120) = {NDate} ");
+            sb.Append($@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
+                         where EmpName = '陈乾乾' ");
+            using (var db = new DBContext())
+            {
+                return db.Database.SqlQuery<v_smartpark_emp>(sb.ToString()).ToList();//
+            }
+        }
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+
+        /// <summary>
+        /// Http请求 获取传入工号对应的subjectID
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="Token"></param>
+        /// <param name="EmpNo"></param>
+        /// <returns></returns>
+        public string GetSubjectID(string url,string Token,string EmpNo)
+        {
+            url = url + $"category=employee&name=&department=&interviewee=&start_time=&end_time=&filterstr=&remark=&extra_id={EmpNo}"; 
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri(url));
+            request.Timeout = 20 * 1000;//设置30s的超时
+            request.ContentType = "application/json";
             var Headers = request.Headers;
             Headers["Authorization"] = Token;//Token认证
-            request.Method = "POST";
-            request.Timeout = timeOut;
-            request.ContentType = "multipart/form-data; boundary=" + boundary;
+            request.Method = "Get";
 
-            // 写入图片
-            var fileStream = new FileStream(FilePath, FileMode.Open, FileAccess.Read);
-            const string filePartHeader = "Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\n" + "Content-Type: application/octet-stream\r\n\r\n";
-            var header = string.Format(filePartHeader, FileName, FilePath);
-            var headerbytes = Encoding.UTF8.GetBytes(header);
-
-            ms.Write(beginBoundary, 0, beginBoundary.Length);
-            ms.Write(headerbytes, 0, headerbytes.Length);
-
-            var buffer = new byte[1024];
-            int bytesRead; // =0
-            while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) != 0)
-            {
-                ms.Write(buffer, 0, bytesRead);
-            }
-            //var str = ms.ToArray();
-            //string strstr = Encoding.UTF8.GetString(str);
-
-            // 字符串拼接
-            var stringKeyHeader = "\r\n--" + boundary +
-                                   "\r\nContent-Disposition: form-data; name=\"{0}\"" +
-                                   "\r\n\r\n{1}\r\n";
-
-            foreach (byte[] formitembytes in from string key in strdic.Keys
-                                             select string.Format(stringKeyHeader, key, strdic[key])
-                                                 into formitem
-                                             select Encoding.UTF8.GetBytes(formitem))
-            {
-                ms.Write(formitembytes, 0, formitembytes.Length);
-            }
-
-            // 结束
-            ms.Write(endBoundary, 0, endBoundary.Length);
-            request.ContentLength = ms.Length;
-            var requestStream = request.GetRequestStream();
-            ms.Position = 0;
-            var tempBuffer = new byte[ms.Length];
-            ms.Read(tempBuffer, 0, tempBuffer.Length);
-            requestStream.Write(tempBuffer, 0, tempBuffer.Length);
-
-            var httpWebResponse = (HttpWebResponse)request.GetResponse();
-            using (StreamReader StreamReader = new StreamReader(httpWebResponse.GetResponseStream(),
-                                                            Encoding.UTF8))
-            {
-                ResponseResult = StreamReader.ReadToEnd();
-            }
-            requestStream.Close();
-            ms.Close();
-            fileStream.Close();
+            HttpWebResponse httpWebResponse = (HttpWebResponse)request.GetResponse();
+            StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream());
+            string result = streamReader.ReadToEnd();
             httpWebResponse.Close();
-            request.Abort();
-            return ResponseResult;
+            streamReader.Close();
+
+            Root da = JsonConvert.DeserializeObject<Root>(result);
+            return da.data.Select(d => d.photos);
         }
+
     }
 }

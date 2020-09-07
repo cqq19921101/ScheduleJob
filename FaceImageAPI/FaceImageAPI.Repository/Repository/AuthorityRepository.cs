@@ -1,4 +1,5 @@
-﻿using FaceImageAPI.Helper;
+﻿using FaceImageAPI.Entity;
+using FaceImageAPI.Helper;
 using FaceImageAPI.Repository.IRepository;
 using Newtonsoft.Json;
 using System;
@@ -57,7 +58,7 @@ namespace FaceImageAPI.Repository.Repository
             postStream.Close();
             request.Abort();
 
-            Root da = JsonConvert.DeserializeObject<Root>(result);
+            JsonEntity.Root da = JsonConvert.DeserializeObject<JsonEntity.Root>(result);
             return da.data.auth_token;
         }
     }
