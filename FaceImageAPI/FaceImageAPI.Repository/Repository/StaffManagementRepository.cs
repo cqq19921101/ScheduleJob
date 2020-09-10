@@ -1,6 +1,5 @@
 ﻿using FaceImageAPI.Domain.DB;
 using FaceImageAPI.Entity;
-using FaceImageAPI.Helper;
 using FaceImageAPI.Repository.IRepository;
 using Newtonsoft.Json;
 using System;
@@ -9,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace FaceImageAPI.Repository.Repository
 {
@@ -17,13 +17,14 @@ namespace FaceImageAPI.Repository.Repository
     /// </summary>
     public class StaffManagementRepository : IStaffManagementRepository
     {
+        static string NDate = DateTime.Now.ToString("yyyy-MM-dd");
+
         /// <summary>
         /// 上正式环境前 同步人脸库中的所有符合条件的数据
         /// </summary>
         /// <returns></returns>
         public List<v_smartpark_emp> GetUserDataBeforePRD()
         {
-
             StringBuilder sb = new StringBuilder();
             sb.Append(@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
                             where EmpName = '陈乾乾'
@@ -40,14 +41,15 @@ namespace FaceImageAPI.Repository.Repository
         /// <returns></returns>
         public List<v_smartpark_emp> GetEntryEmp()
         {
-            string NDate = DateTime.Now.ToString("yyyy-MM-dd");
             StringBuilder sb = new StringBuilder();
+            //sb.Append($@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
+            //                where CONVERT(varchar(10),JDate,120) = '{NDate}'
+            //                and FileData is not null    ");
             sb.Append($@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
-                            where CONVERT(varchar(10),JDate,120) = {NDate}
-                            and FileData is not null    ");
+                            where EmpName = '陈乾乾'");
             using (var db = new DBContext())
             {
-                return  db.Database.SqlQuery<v_smartpark_emp>(sb.ToString()).ToList();//
+                return db.Database.SqlQuery<v_smartpark_emp>(sb.ToString()).ToList();//
             }
         }
 
@@ -57,7 +59,6 @@ namespace FaceImageAPI.Repository.Repository
         /// <returns></returns>
         public List<v_smartpark_emp> GetLeaveEmp()
         {
-            string NDate = DateTime.Now.ToString("yyyy -MM-dd");
             StringBuilder sb = new StringBuilder();
             //sb.Append($@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
             //             where CONVERT(varchar(10),LDate,120) = {NDate} ");
@@ -69,6 +70,24 @@ namespace FaceImageAPI.Repository.Repository
             }
         }
 
+        /// <summary>
+        /// 抓取当天更新过资料的员工
+        /// </summary>
+        /// <returns></returns>
+        public List<v_smartpark_emp> GetUpdateEmp()
+        {
+            StringBuilder sb = new StringBuilder();
+            //sb.Append($@"Select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp 
+            //                where CONVERT(varchar(10),UTime,120) = '{NDate}'
+            //                and FileData is not null    ");
+            sb.Append(@"Select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp 
+                        Where EmpName = '陈乾乾'");
+            using (var db = new DBContext())
+            {
+                return db.Database.SqlQuery<v_smartpark_emp>(sb.ToString()).ToList();
+            }
+            
+        }
 
         /// <summary>
         /// Http请求 获取传入工号对应的subjectID
@@ -77,15 +96,15 @@ namespace FaceImageAPI.Repository.Repository
         /// <param name="Token"></param>
         /// <param name="EmpNo"></param>
         /// <returns></returns>
-        public string GetSubjectID(string url,string Token,string EmpNo)
+        public string GetSubjectID(string url, string Token, string EmpNo)
         {
-            url = url + $"category=employee&name=&department=&interviewee=&start_time=&end_time=&filterstr=&remark=&extra_id={EmpNo}"; 
+            url = url + $"category=employee&name=&department=&interviewee=&start_time=&end_time=&filterstr=&remark=&extra_id={EmpNo}";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri(url));
             request.Timeout = 20 * 1000;//设置30s的超时
             request.ContentType = "application/json";
             var Headers = request.Headers;
             Headers["Authorization"] = Token;//Token认证
-            request.Method = "Get";
+            request.Method = "GET";
 
             HttpWebResponse httpWebResponse = (HttpWebResponse)request.GetResponse();
             StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream());
@@ -94,8 +113,8 @@ namespace FaceImageAPI.Repository.Repository
             streamReader.Close();
 
             Root da = JsonConvert.DeserializeObject<Root>(result);
-            return da.data.Select(d => d.photos);
+            PhotosItem photoitem = da.data.FirstOrDefault().photos.FirstOrDefault();
+            return photoitem.subject_id.ToString();
         }
-
     }
 }

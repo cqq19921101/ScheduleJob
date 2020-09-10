@@ -1,13 +1,13 @@
 ﻿using Autofac;
-using FaceImageAPI.Entity;
 using FaceImageAPI.Ioc;
-using FaceImageAPI.Services;
+using FaceImageAPI.Services.IService;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Drawing;
-using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace FaceImageAPI
 {
@@ -15,42 +15,59 @@ namespace FaceImageAPI
     {
         static void Main(string[] args)
         {
-            ArrayList sublist = new ArrayList();
-            string ReturnMessage1 = string.Empty;
-            string ReturnMessage2 = string.Empty;
-            string ReturnMessage3 = string.Empty;
+            ArrayList Lsublist = new ArrayList();
+            ArrayList Usublist = new ArrayList();
             string Token = string.Empty;
+
+            #region Declare Parameter
             string TokenUrl = ConfigurationManager.AppSettings["TokenUrl"].ToString();
             string CreateUserUrl = ConfigurationManager.AppSettings["CreateUserUrl"].ToString();
             string DelLeaveEmpUrl = ConfigurationManager.AppSettings["DelLeaveEmpUrl"].ToString();
             string GetSubjectIDUrl = ConfigurationManager.AppSettings["GetSubjectIDUrl"].ToString();
+            string UpdateEmpUrl = ConfigurationManager.AppSettings["UpdateEmpUrl"].ToString();
             string LoginId = ConfigurationManager.AppSettings["LoginId"].ToString();
             string LoginPsd = ConfigurationManager.AppSettings["LoginPsd"].ToString();
+            #endregion
 
-            Container.Init();//初始化Ioc容器
-
+            #region Ioc Init
+            //初始化Ioc容器
+            Container.Init();
             //Ioc 注入
             IAuthorityService AuthorityService = Container.Instance.Resolve<IAuthorityService>();
             IStaffManagementService StaffManagementService = Container.Instance.Resolve<IStaffManagementService>();
+            #endregion
 
+            #region Get Token
             //获取Token
             Token = AuthorityService.GetToken(TokenUrl, LoginId, LoginPsd);
+            #endregion
 
+            #region Insert
+            //Add 执行创建用户并上传图片至底库的方法 Before PRD
+            //StaffManagementService.ExcutePostUpload(CreateUserUrl, Token);
 
-            //执行创建用户并上传图片至底库的方法 Before PRD
-            //ReturnMessage1 = StaffManagementService.ExcutePostUpload(CreateUserUrl, Token);
+            //Add 执行新增每天新入职员工的方法
+            StaffManagementService.ExcutePostAddEntryEmp(CreateUserUrl, Token);
+            #endregion
 
-            ////执行新增每天新入职员工的方法
-            //ReturnMessage2 = StaffManagementService.ExcutePostAddEntryEmp(CreateUserUrl, Token);
+            #region Update
+            ////Update 执行更新每天资料变动的人员
+            //Usublist = StaffManagementService.GetSubListByUpdatingEmpNo(GetSubjectIDUrl, Token);//更新过资料的人员集合
+            //if (Usublist != null && Usublist.Count > 0)
+            //{
+            //    StaffManagementService.ExcutePostUpdateEmp(UpdateEmpUrl, Token, Usublist);
+            //}
+            #endregion
 
-            //获取离职人员的subjectid集合
-            sublist = StaffManagementService.GetSubListByEmpNo(GetSubjectIDUrl,Token);
+            #region Delete 
+            ////Delete 执行删除每天离职员工的方法
+            //Lsublist = StaffManagementService.GetSubListByLeavingEmpNo(GetSubjectIDUrl, Token);//离职人员集合
+            //if (Lsublist.Count > 0 && Lsublist != null)
+            //{
+            //    StaffManagementService.ExcutePostDelLeaveEmp(DelLeaveEmpUrl, Token, Lsublist);
+            //}
+            #endregion
 
-            if (sublist.Count > 0 && sublist != null)
-            {
-                //执行删除每天离职员工的方法
-                ReturnMessage3 = StaffManagementService.ExcutePostDelLeaveEmp(CreateUserUrl, Token, sublist);
-            }
         }
     }
 }

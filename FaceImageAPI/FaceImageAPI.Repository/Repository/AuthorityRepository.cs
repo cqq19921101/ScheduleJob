@@ -1,5 +1,5 @@
 ﻿using FaceImageAPI.Entity;
-using FaceImageAPI.Helper;
+using FaceImageAPI.Repository.Helper;
 using FaceImageAPI.Repository.IRepository;
 using Newtonsoft.Json;
 using System;
@@ -9,7 +9,6 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using static FaceImageAPI.Entity.JsonEntity;
 
 namespace FaceImageAPI.Repository.Repository
 {

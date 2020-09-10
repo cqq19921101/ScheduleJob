@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FaceImageAPI.Services
+namespace FaceImageAPI.Services.IService
 {
     /// <summary>
     /// 员工管理接口
@@ -24,31 +24,30 @@ namespace FaceImageAPI.Services
         /// <returns></returns>
         string PostCreateUpLoadUser(string url, string Token, int timeOut, string FileName, string FilePath, Dictionary<string, object> strdic);
 
-        /// <summary>
-        /// 根据工号获取用户的Subject_id
-        /// </summary>
-        /// <param name="url"></param>
-        /// <param name="Token"></param>
-        /// <param name="EmpNo">工号</param>
-        /// <returns>subject_id</returns>
-        string GetUserDataByEmpNo(string url, string Token, string EmpNo);
+        ///// <summary>
+        ///// 根据Subjectid删除单个用户数据
+        ///// </summary>
+        ///// <param name="url"></param>
+        ///// <param name="Token"></param>
+        ///// <param name="subjectid"></param>
+        ///// <returns></returns>
+        //string DeleteBySubjectId(string url, string Token, string subjectid);
 
         /// <summary>
-        /// 根据Subjectid删除单个用户数据
-        /// </summary>
-        /// <param name="url"></param>
-        /// <param name="Token"></param>
-        /// <param name="subjectid"></param>
-        /// <returns></returns>
-        string DeleteBySubjectId(string url, string Token, string subjectid);
-
-        /// <summary>
-        /// 根据工号获取对应的subjectid集合
+        /// 根据离职工号获取对应的subjectid集合
         /// </summary>
         /// <param name="url"></param>
         /// <param name="Token"></param>
         /// <returns></returns>
-        ArrayList GetSubListByEmpNo(string url,string Token);
+        ArrayList GetSubListByLeavingEmpNo(string url, string Token);
+
+        /// <summary>
+        /// 根据当天更新过资料的工号获取对应的subjectid集合
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="Token"></param>
+        /// <returns></returns>
+        ArrayList GetSubListByUpdatingEmpNo(string url, string Token);
 
         /// <summary>
         /// 执行创建用户并上传图片至底库的方法
@@ -73,7 +72,16 @@ namespace FaceImageAPI.Services
         /// <param name="Token"></param>
         /// <param name="subject_id"></param>
         /// <returns></returns>
-        string ExcutePostDelLeaveEmp(string DelLeaveEmpUrl,string Token,ArrayList sublist);
+        string ExcutePostDelLeaveEmp(string DelLeaveEmpUrl, string Token, ArrayList sublist);
+
+        /// <summary>
+        /// 执行更新每天资料变动的人员
+        /// </summary>
+        /// <param name="UpdateEmpUrl"></param>
+        /// <param name="Token"></param>
+        /// <param name="subject_id"></param>
+        /// <returns></returns>
+        string ExcutePostUpdateEmp(string UpdateEmpUrl, string Token, ArrayList sublist);
 
         /// <summary>
         /// 16进制转换Byte[]类型

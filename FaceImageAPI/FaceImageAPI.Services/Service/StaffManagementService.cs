@@ -1,5 +1,6 @@
 ﻿using FaceImageAPI.Entity;
 using FaceImageAPI.Repository.IRepository;
+using FaceImageAPI.Services.IService;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FaceImageAPI.Services
+namespace FaceImageAPI.Services.Service
 {
     /// <summary>
     /// 员工管理服务
@@ -27,6 +28,7 @@ namespace FaceImageAPI.Services
             _StaffManagementRepository = StaffManagementRepository;
         }
 
+        #region 
         /// <summary>
         /// Post方式创建用户并上传人脸库图片
         /// </summary>
@@ -110,59 +112,56 @@ namespace FaceImageAPI.Services
         }
 
         /// <summary>
-        /// 根据工号获取用户的Subject_id
-        /// </summary>
-        /// <param name="url"></param>
-        /// <param name="Token"></param>
-        /// <param name="EmpNo">工号</param>
-        /// <returns>subject_id</returns>
-        public string GetUserDataByEmpNo(string url, string Token, string EmpNo)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// 根据Subjectid删除单个用户数据
-        /// </summary>
-        /// <param name="url"></param>
-        /// <param name="Token"></param>
-        /// <param name="subjectid"></param>
-        /// <returns>ResponseResult</returns>
-        public string DeleteBySubjectId(string url, string Token, string subjectid)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// 根据工号获取对应的subjectid集合
+        /// 根据离职工号获取对应的subjectid集合
         /// </summary>
         /// <param name="url"></param>
         /// <param name="Token"></param>
         /// <returns></returns>
-        public ArrayList GetSubListByEmpNo(string url, string Token)
+        public ArrayList GetSubListByLeavingEmpNo(string url, string Token)
         {
             ArrayList sublist = new ArrayList();
-
-            string subjectid = _StaffManagementRepository.GetSubjectID(url,Token,"12200473");
-
-
-            //List<v_smartpark_emp> LEmplist = _StaffManagementRepository.GetLeaveEmp();
-            //if (LEmplist != null && LEmplist.Count > 0)
-            //{
-            //    foreach (v_smartpark_emp item in LEmplist)
-            //    {
-
-            //    }
-            //}
-            //else
-            //{
-            //    return sublist;
-            //}
-
-
+            List<v_smartpark_emp> LEmplist = _StaffManagementRepository.GetLeaveEmp();
+            if (LEmplist != null && LEmplist.Count > 0)
+            {
+                foreach (v_smartpark_emp item in LEmplist)
+                {
+                    string subjectid = _StaffManagementRepository.GetSubjectID(url, Token, item.EmpNumber);
+                    sublist.Add(subjectid);
+                }
+            }
+            else
+            {
+                return null;
+            }
             return sublist;
         }
 
+        /// <summary>
+        /// 根据当天更新过资料的工号获取对应的subjectid集合
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="Token"></param>
+        /// <returns></returns>
+        public ArrayList GetSubListByUpdatingEmpNo(string url, string Token)
+        {
+            ArrayList sublist = new ArrayList();
+            List<v_smartpark_emp> UEmplist = _StaffManagementRepository.GetUpdateEmp();
+            if (UEmplist != null && UEmplist.Count > 0)
+            {
+                foreach (v_smartpark_emp item in UEmplist)
+                {
+                    string subjectid = _StaffManagementRepository.GetSubjectID(url, Token, item.EmpNumber);
+                    sublist.Add(subjectid);
+                }
+            }
+            else
+            {
+                return null;
+            }
+            return sublist;
+
+        }
+        #endregion
 
         #region Excute Function
 
@@ -176,21 +175,25 @@ namespace FaceImageAPI.Services
         {
             string ResponseResult = string.Empty;
             List<v_smartpark_emp> lst = _StaffManagementRepository.GetUserDataBeforePRD();
-            foreach (v_smartpark_emp item in lst)
+            if (lst != null && lst.Count > 0)
             {
-                Dictionary<string, object> dic = new Dictionary<string, object>();
-                dic.Add("subject_type", "0");
-                dic.Add("group_ids", "0");
-                dic.Add("extra_id", item.EmpNumber);
-                dic.Add("name", item.EmpName);
+                foreach (v_smartpark_emp item in lst)
+                {
+                    Dictionary<string, object> dic = new Dictionary<string, object>();
+                    dic.Add("subject_type", "0");
+                    dic.Add("group_ids", "0");
+                    dic.Add("extra_id", item.EmpNumber);
+                    dic.Add("name", item.EmpName);
 
-                Stream stream = new MemoryStream(item.FileData);
-                Bitmap img = new Bitmap(stream);
-                img.Save(AppDomain.CurrentDomain.BaseDirectory + $@"\Photo\{item.EmpName}.jpg");
-                string filepath = AppDomain.CurrentDomain.BaseDirectory + $@"\Photo\{item.EmpName}.jpg";
-                ResponseResult = PostCreateUpLoadUser(CreateUserUrl, Token, 30000, "photo", filepath, dic);
+                    Stream stream = new MemoryStream(item.FileData);
+                    Bitmap img = new Bitmap(stream);
+                    string FilePath = AppDomain.CurrentDomain.BaseDirectory + $@"\Photo\{item.EmpName}.jpg";
+                    img.Save(FilePath);
+                    string filepath = AppDomain.CurrentDomain.BaseDirectory + $@"\Photo\{item.EmpName}.jpg";
+                    ResponseResult = PostCreateUpLoadUser(CreateUserUrl, Token, 30000, "photo", filepath, dic);
+                }
             }
-            return "OK";
+            return ResponseResult;
         }
 
         /// <summary>
@@ -201,7 +204,31 @@ namespace FaceImageAPI.Services
         /// <returns></returns>
         public string ExcutePostAddEntryEmp(string CreateEntryEmpUrl, string Token)
         {
-            throw new NotImplementedException();
+            string ResponseResult = string.Empty;
+            List<v_smartpark_emp> lst = _StaffManagementRepository.GetEntryEmp();
+            if (lst != null && lst.Count > 0)
+            {
+                foreach (v_smartpark_emp item in lst)
+                {
+                    Dictionary<string, object> dic = new Dictionary<string, object>();
+                    dic.Add("subject_type", "0");
+                    dic.Add("group_ids", "0");
+                    dic.Add("extra_id", item.EmpNumber);
+                    dic.Add("name", item.EmpName);
+
+                    Stream stream = new MemoryStream(item.FileData);
+                    Bitmap img = new Bitmap(stream);
+                    string FilePath = AppDomain.CurrentDomain.BaseDirectory + $@"\Photo\{item.EmpName}.jpg";
+                    img.Save(FilePath);
+                    string filepath = AppDomain.CurrentDomain.BaseDirectory + $@"\Photo\{item.EmpName}.jpg";
+                    ResponseResult = PostCreateUpLoadUser(CreateEntryEmpUrl, Token, 30000, "photo", filepath, dic);
+                }
+            }
+            else
+            {
+
+            }
+            return ResponseResult;
         }
 
         /// <summary>
@@ -213,11 +240,87 @@ namespace FaceImageAPI.Services
         /// <returns></returns>
         public string ExcutePostDelLeaveEmp(string DelLeaveEmpUrl, string Token, ArrayList sublist)
         {
-            throw new NotImplementedException();
+            string result = string.Empty;
+            if (sublist != null && sublist.Count > 0)
+            {
+                foreach (string parameter in sublist)
+                {
+                    DelLeaveEmpUrl = DelLeaveEmpUrl + int.Parse(parameter);
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri(DelLeaveEmpUrl));
+                    request.Timeout = 20 * 1000;//设置30s的超时
+                    request.ContentType = "application/x-www-form-urlencoded";
+                    var Headers = request.Headers;
+                    Headers["Authorization"] = Token;//Token认证
+                    request.Method = "DELETE";
+
+                    HttpWebResponse httpWebResponse = (HttpWebResponse)request.GetResponse();
+                    StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream());
+                    result = streamReader.ReadToEnd();
+                    httpWebResponse.Close();
+                    streamReader.Close();
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 执行更新每天资料变动的人员
+        /// </summary>
+        /// <param name="UpdateEmpUrl"></param>
+        /// <param name="Token"></param>
+        /// <param name="sublist"></param>
+        /// <returns></returns>
+        public string ExcutePostUpdateEmp(string UpdateEmpUrl, string Token, ArrayList sublist)
+        {
+            string result = string.Empty;
+            if (sublist != null && sublist.Count > 0)
+            {
+                foreach (string parameter in sublist)
+                {
+                    UpdateEmpUrl = UpdateEmpUrl + parameter;
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri(UpdateEmpUrl));
+                    request.Timeout = 20 * 1000;//设置30s的超时
+                    request.ContentType = "application/json";
+                    var Headers = request.Headers;
+                    Headers["Authorization"] = Token;//Token认证
+                    request.Method = "PUT";
+                    //var temp = new
+                    //{
+                    //    username = LoginID,
+                    //    password = Password,
+                    //    auth_token = true
+                    //};
+
+                    //var postData = JsonHelper.ObjectToString(temp);
+                    //byte[] data = Encoding.UTF8.GetBytes(postData);
+                    //request.ContentLength = data.Length;
+                    //Stream postStream = request.GetRequestStream();
+                    //postStream.Write(data, 0, data.Length);
+                    //using (var res = request.GetResponse() as HttpWebResponse)
+                    //{
+                    //    if (res.StatusCode == HttpStatusCode.OK)
+                    //    {
+                    //        StreamReader reader = new StreamReader(res.GetResponseStream(), Encoding.UTF8);
+                    //        result = reader.ReadToEnd();
+                    //        reader.Close();
+                    //    }
+                    //}
+                    //postStream.Close();
+                    //request.Abort();
+
+                    HttpWebResponse httpWebResponse = (HttpWebResponse)request.GetResponse();
+                    StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream());
+                    result = streamReader.ReadToEnd();
+                    httpWebResponse.Close();
+                    streamReader.Close();
+                }
+            }
+            return result;
         }
 
         #endregion
 
+        #region Common
         /// <summary>
         /// 16进制转byte[]类型
         /// </summary>
@@ -239,6 +342,7 @@ namespace FaceImageAPI.Services
 
             return returnBytes;
         }
+        #endregion
 
     }
 }

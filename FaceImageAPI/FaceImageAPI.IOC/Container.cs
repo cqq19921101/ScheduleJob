@@ -1,10 +1,10 @@
 ﻿using Autofac;
 using FaceImageAPI.Repository.IRepository;
 using FaceImageAPI.Repository.Repository;
-using FaceImageAPI.Services;
+using FaceImageAPI.Services.IService;
+using FaceImageAPI.Services.Service;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;

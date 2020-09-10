@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A82925E7-4BAA-49E7-9903-412E26904CA4}</ProjectGuid>
+    <ProjectGuid>{4B7E32B3-4F5B-4671-9288-5116B774396C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FaceImageAPI.Repository</RootNamespace>
@@ -15,7 +15,6 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -64,18 +63,18 @@
     <Compile Include="Repository\StaffManagementRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\FaceImageAPI.Domain\FaceImageAPI.Domain.csproj">
-      <Project>{298A5842-C215-410F-835D-0E81DFEF17D1}</Project>
+      <Project>{3CD3EB13-202A-4DC1-8AA4-FF594017295B}</Project>
       <Name>FaceImageAPI.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\FaceImageAPI.Entity\FaceImageAPI.Entity.csproj">
-      <Project>{1a1d5432-acf2-40b5-9729-83cec02db700}</Project>
+      <Project>{A81A10E9-810C-4969-AD3D-3E1CADD041BD}</Project>
       <Name>FaceImageAPI.Entity</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

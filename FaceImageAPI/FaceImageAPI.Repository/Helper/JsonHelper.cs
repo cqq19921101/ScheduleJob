@@ -5,8 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 
-namespace FaceImageAPI.Helper
+namespace FaceImageAPI.Repository.Helper
 {
+    /// <summary>
+    /// JsonHelperfc
+    /// </summary>
     public class JsonHelper
     {
         /// <summary>

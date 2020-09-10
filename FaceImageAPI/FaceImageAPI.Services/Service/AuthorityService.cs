@@ -1,11 +1,17 @@
 ﻿using FaceImageAPI.Repository.IRepository;
+using FaceImageAPI.Services.IService;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace FaceImageAPI.Services
+namespace FaceImageAPI.Services.Service
 {
     /// <summary>
     /// 权限管理服务
     /// </summary>
-    public class AuthorityService :IAuthorityService
+    public class AuthorityService : IAuthorityService
     {
         private readonly IAuthorityRepository _AuthorityRepository;
         /// <summary>
@@ -24,9 +30,9 @@ namespace FaceImageAPI.Services
         /// <param name="LoginID"></param>
         /// <param name="Password"></param>
         /// <returns></returns>
-        public string GetToken(string url,string LoginID, string Password)
+        public string GetToken(string url, string LoginID, string Password)
         {
-            return _AuthorityRepository.GetToken(url,LoginID,Password);
+            return _AuthorityRepository.GetToken(url, LoginID, Password);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace FaceImageAPI.Repository.IRepository
         ///// <param name="strdic">Body参数</param>
         ///// <returns></returns>
         //string PostCreateUpLoadUser(string url, string Token, int timeOut, string FileName, string FilePath, Dictionary<string, object> strdic);
-      
+
         /// <summary>
         /// 上正式环境前 同步人脸库所有数据
         /// </summary>
@@ -43,12 +43,18 @@ namespace FaceImageAPI.Repository.IRepository
         List<v_smartpark_emp> GetLeaveEmp();
 
         /// <summary>
+        /// 抓取当天更新过资料的员工
+        /// </summary>
+        /// <returns></returns>
+        List<v_smartpark_emp> GetUpdateEmp();
+
+        /// <summary>
         /// Http请求 获取传入工号对应的subjectID
         /// </summary>
         /// <param name="url"></param>
         /// <param name="Token"></param>
         /// <param name="EmpNo"></param>
         /// <returns></returns>
-        string GetSubjectID(string url,string Token, string EmpNo);
+        string GetSubjectID(string url, string Token, string EmpNo);
     }
 }

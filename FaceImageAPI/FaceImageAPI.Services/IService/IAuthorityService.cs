@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FaceImageAPI.Services
+namespace FaceImageAPI.Services.IService
 {
     /// <summary>
     /// 权限管理接口
@@ -18,6 +18,6 @@ namespace FaceImageAPI.Services
         /// <param name="LoginID">登录账号</param>
         /// <param name="Password">登录密码</param>
         /// <returns></returns>
-        string GetToken(string url,string LoginID,string Password);
+        string GetToken(string url, string LoginID, string Password);
     }
 }
