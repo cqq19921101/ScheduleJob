@@ -17,6 +17,8 @@ D:\Desktop\Open Source Project\FaceImageAPI\FaceImageAPI.Repository\obj\Debug\Fa
 D:\Desktop\Open Source Project\FaceImageAPI\FaceImageAPI.Repository\obj\Debug\FaceImageAPI.Repository.csproj.CopyComplete
 D:\Desktop\Open Source Project\FaceImageAPI\FaceImageAPI.Repository\obj\Debug\FaceImageAPI.Repository.dll
 D:\Desktop\Open Source Project\FaceImageAPI\FaceImageAPI.Repository\obj\Debug\FaceImageAPI.Repository.pdb
+D:\Desktop\FaceImageAPI\FaceImageAPI.Repository\obj\Debug\FaceImageAPI.Repository.csprojAssemblyReference.cache
+D:\Desktop\FaceImageAPI\FaceImageAPI.Repository\obj\Debug\FaceImageAPI.Repository.csproj.CoreCompileInputs.cache
 D:\Desktop\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\FaceImageAPI.Repository.dll.config
 D:\Desktop\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\FaceImageAPI.Repository.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\FaceImageAPI.Repository.pdb
@@ -31,8 +33,6 @@ D:\Desktop\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\FaceImageAPI.Entity.pd
 D:\Desktop\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\EntityFramework.xml
 D:\Desktop\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\EntityFramework.SqlServer.xml
 D:\Desktop\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\Newtonsoft.Json.xml
-D:\Desktop\FaceImageAPI\FaceImageAPI.Repository\obj\Debug\FaceImageAPI.Repository.csprojAssemblyReference.cache
-D:\Desktop\FaceImageAPI\FaceImageAPI.Repository\obj\Debug\FaceImageAPI.Repository.csproj.CoreCompileInputs.cache
 D:\Desktop\FaceImageAPI\FaceImageAPI.Repository\obj\Debug\FaceImageAPI.Repository.csproj.CopyComplete
 D:\Desktop\FaceImageAPI\FaceImageAPI.Repository\obj\Debug\FaceImageAPI.Repository.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI.Repository\obj\Debug\FaceImageAPI.Repository.pdb

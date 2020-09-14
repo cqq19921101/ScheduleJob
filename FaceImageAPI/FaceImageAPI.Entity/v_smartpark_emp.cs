@@ -22,6 +22,10 @@ namespace FaceImageAPI.Entity
         /// JDate
         /// </summary>
         public DateTime JDate { get; set; }
+        /// <summary>
+        /// JDate
+        /// </summary>
+        public DateTime? LDate { get; set; }
 
         /// <summary>
         /// Image

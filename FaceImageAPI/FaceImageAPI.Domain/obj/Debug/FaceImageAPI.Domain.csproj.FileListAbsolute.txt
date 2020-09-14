@@ -10,6 +10,7 @@ D:\Desktop\Open Source Project\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceIm
 D:\Desktop\Open Source Project\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.csproj.CopyComplete
 D:\Desktop\Open Source Project\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.dll
 D:\Desktop\Open Source Project\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.pdb
+D:\Desktop\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.csproj.CoreCompileInputs.cache
 D:\Desktop\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\FaceImageAPI.Domain.dll.config
 D:\Desktop\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\FaceImageAPI.Domain.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\FaceImageAPI.Domain.pdb
@@ -17,7 +18,7 @@ D:\Desktop\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\EntityFramework.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\EntityFramework.SqlServer.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\EntityFramework.xml
 D:\Desktop\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\EntityFramework.SqlServer.xml
-D:\Desktop\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.csproj.CoreCompileInputs.cache
 D:\Desktop\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.csproj.CopyComplete
 D:\Desktop\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.pdb
+D:\Desktop\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.csprojAssemblyReference.cache

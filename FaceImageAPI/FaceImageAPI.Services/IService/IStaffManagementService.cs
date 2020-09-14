@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FaceImageAPI.Entity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,26 @@ namespace FaceImageAPI.Services.IService
     public interface IStaffManagementService
     {
         /// <summary>
-        /// Post方式创建用户并上传人脸库图片
+        /// 创建用户并上传图片底库 单个实体
+        /// </summary>
+        /// <param name="CreateEntryEmpUrl"></param>
+        /// <param name="EmpList"></param>
+        /// <param name="Token"></param>
+        /// <returns></returns>
+        string CreateUploadUser(string CreateEntryEmpUrl, v_smartpark_emp Emp, string Token);
+
+        /// <summary>
+        /// 创建用户并上传图片底库 实体集合
+        /// </summary>
+        /// <param name="CreateEntryEmpUrl"></param>
+        /// <param name="EmpList"></param>
+        /// <param name="Token"></param>
+        /// <returns></returns>
+        string CreateUploadUser(string CreateEntryEmpUrl, List<v_smartpark_emp> EmpList, string Token);
+
+
+        /// <summary>
+        /// 接口创建方法
         /// </summary>
         /// <param name="url">Server Address</param>
         /// <param name="Token">Token</param>
@@ -24,14 +44,14 @@ namespace FaceImageAPI.Services.IService
         /// <returns></returns>
         string PostCreateUpLoadUser(string url, string Token, int timeOut, string FileName, string FilePath, Dictionary<string, object> strdic);
 
-        ///// <summary>
-        ///// 根据Subjectid删除单个用户数据
-        ///// </summary>
-        ///// <param name="url"></param>
-        ///// <param name="Token"></param>
-        ///// <param name="subjectid"></param>
-        ///// <returns></returns>
-        //string DeleteBySubjectId(string url, string Token, string subjectid);
+        /// <summary>
+        /// 接口删除方法
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="Token"></param>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        string PostDeleteFunction(string url, string Token, string parameter);
 
         /// <summary>
         /// 根据离职工号获取对应的subjectid集合
@@ -42,12 +62,12 @@ namespace FaceImageAPI.Services.IService
         ArrayList GetSubListByLeavingEmpNo(string url, string Token);
 
         /// <summary>
-        /// 根据当天更新过资料的工号获取对应的subjectid集合
+        /// 根据当天更新过资料的工号获取对应的subjectid集合和员工实体集合
         /// </summary>
         /// <param name="url"></param>
         /// <param name="Token"></param>
         /// <returns></returns>
-        ArrayList GetSubListByUpdatingEmpNo(string url, string Token);
+        void GetSubjectidandEmpNumber(string url, string Token, out ArrayList Usublist, out List<v_smartpark_emp> UEmplist);
 
         /// <summary>
         /// 执行创建用户并上传图片至底库的方法
@@ -81,7 +101,7 @@ namespace FaceImageAPI.Services.IService
         /// <param name="Token"></param>
         /// <param name="subject_id"></param>
         /// <returns></returns>
-        string ExcutePostUpdateEmp(string UpdateEmpUrl, string Token, ArrayList sublist);
+        string ExcutePostUpdateEmp(string UpdateEmpUrl, string CreateEntryEmpUrl, string Token, ArrayList sublist, List<v_smartpark_emp> emplist);
 
         /// <summary>
         /// 16进制转换Byte[]类型

@@ -17,6 +17,8 @@ D:\Desktop\Open Source Project\FaceImageAPI\FaceImageAPI.Services\obj\Debug\Face
 D:\Desktop\Open Source Project\FaceImageAPI\FaceImageAPI.Services\obj\Debug\FaceImageAPI.Services.csproj.CopyComplete
 D:\Desktop\Open Source Project\FaceImageAPI\FaceImageAPI.Services\obj\Debug\FaceImageAPI.Services.dll
 D:\Desktop\Open Source Project\FaceImageAPI\FaceImageAPI.Services\obj\Debug\FaceImageAPI.Services.pdb
+D:\Desktop\FaceImageAPI\FaceImageAPI.Services\obj\Debug\FaceImageAPI.Services.csprojAssemblyReference.cache
+D:\Desktop\FaceImageAPI\FaceImageAPI.Services\obj\Debug\FaceImageAPI.Services.csproj.CoreCompileInputs.cache
 D:\Desktop\FaceImageAPI\FaceImageAPI.Services\bin\Debug\FaceImageAPI.Services.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI.Services\bin\Debug\FaceImageAPI.Services.pdb
 D:\Desktop\FaceImageAPI\FaceImageAPI.Services\bin\Debug\FaceImageAPI.Entity.dll
@@ -31,8 +33,6 @@ D:\Desktop\FaceImageAPI\FaceImageAPI.Services\bin\Debug\FaceImageAPI.Domain.pdb
 D:\Desktop\FaceImageAPI\FaceImageAPI.Services\bin\Debug\FaceImageAPI.Domain.dll.config
 D:\Desktop\FaceImageAPI\FaceImageAPI.Services\bin\Debug\Newtonsoft.Json.xml
 D:\Desktop\FaceImageAPI\FaceImageAPI.Services\bin\Debug\EntityFramework.xml
-D:\Desktop\FaceImageAPI\FaceImageAPI.Services\obj\Debug\FaceImageAPI.Services.csprojAssemblyReference.cache
-D:\Desktop\FaceImageAPI\FaceImageAPI.Services\obj\Debug\FaceImageAPI.Services.csproj.CoreCompileInputs.cache
 D:\Desktop\FaceImageAPI\FaceImageAPI.Services\obj\Debug\FaceImageAPI.Services.csproj.CopyComplete
 D:\Desktop\FaceImageAPI\FaceImageAPI.Services\obj\Debug\FaceImageAPI.Services.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI.Services\obj\Debug\FaceImageAPI.Services.pdb

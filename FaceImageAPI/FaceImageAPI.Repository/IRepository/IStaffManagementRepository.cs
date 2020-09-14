@@ -22,7 +22,7 @@ namespace FaceImageAPI.Repository.IRepository
         ///// <param name="FilePath">图片路径</param>
         ///// <param name="strdic">Body参数</param>
         ///// <returns></returns>
-        //string PostCreateUpLoadUser(string url, string Token, int timeOut, string FileName, string FilePath, Dictionary<string, object> strdic);
+        //string  PostCreateUpLoadUser(string url, string Token, int timeOut, string FileName, string FilePath, Dictionary<string, object> strdic);
 
         /// <summary>
         /// 上正式环境前 同步人脸库所有数据

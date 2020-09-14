@@ -228,6 +228,8 @@ D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\System.Xml.XmlSerializer.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\System.Xml.XPath.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\System.Xml.XPath.XDocument.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\Autofac.dll
+D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\EntityFramework.dll
+D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\EntityFramework.SqlServer.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\FaceImageAPI.Ioc.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\FaceImageAPI.Services.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
@@ -237,11 +239,12 @@ D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\FaceImageAPI.Repository.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\FaceImageAPI.Entity.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\FaceImageAPI.Domain.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\Newtonsoft.Json.dll
-D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\EntityFramework.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\FaceImageAPI.Ioc.pdb
 D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\FaceImageAPI.Services.pdb
 D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\Autofac.pdb
 D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\Autofac.xml
+D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\EntityFramework.xml
+D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\EntityFramework.SqlServer.xml
 D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
 D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\System.Threading.Tasks.Extensions.xml
@@ -251,12 +254,9 @@ D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\FaceImageAPI.Entity.pdb
 D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\FaceImageAPI.Domain.pdb
 D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\FaceImageAPI.Domain.dll.config
 D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\Newtonsoft.Json.xml
-D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\EntityFramework.xml
 D:\Desktop\FaceImageAPI\FaceImageAPI\obj\Debug\FaceImageAPI.csprojAssemblyReference.cache
 D:\Desktop\FaceImageAPI\FaceImageAPI\obj\Debug\FaceImageAPI.exe.config
 D:\Desktop\FaceImageAPI\FaceImageAPI\obj\Debug\FaceImageAPI.csproj.CoreCompileInputs.cache
 D:\Desktop\FaceImageAPI\FaceImageAPI\obj\Debug\FaceImageAPI.csproj.CopyComplete
 D:\Desktop\FaceImageAPI\FaceImageAPI\obj\Debug\FaceImageAPI.exe
 D:\Desktop\FaceImageAPI\FaceImageAPI\obj\Debug\FaceImageAPI.pdb
-D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\EntityFramework.SqlServer.dll
-D:\Desktop\FaceImageAPI\FaceImageAPI\bin\Debug\EntityFramework.SqlServer.xml

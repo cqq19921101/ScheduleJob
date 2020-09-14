@@ -26,9 +26,10 @@ namespace FaceImageAPI.Repository.Repository
         public List<v_smartpark_emp> GetUserDataBeforePRD()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
-                            where EmpName = '陈乾乾'
-                            and LDate IS NULL and FileData IS Not Null");
+            sb.Append(@"select * from v_smartpark_emp
+                        where LDate IS NULL and FileData IS Not Null 
+                        order by JDate");
+            //and EmpName = '陈乾乾'
             using (var db = new DBContext())
             {
                 return db.Database.SqlQuery<v_smartpark_emp>(sb.ToString()).ToList();//
@@ -42,11 +43,12 @@ namespace FaceImageAPI.Repository.Repository
         public List<v_smartpark_emp> GetEntryEmp()
         {
             StringBuilder sb = new StringBuilder();
+            sb.Append($@"select  * from v_smartpark_emp
+                         where CONVERT(varchar(10),JDate,120) = '{NDate}'
+                         and FileData is not null and LDate is NULL
+                         order by JDate");
             //sb.Append($@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
-            //                where CONVERT(varchar(10),JDate,120) = '{NDate}'
-            //                and FileData is not null    ");
-            sb.Append($@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
-                            where EmpName = '陈乾乾'");
+            //                where EmpName = '陈乾乾'");
             using (var db = new DBContext())
             {
                 return db.Database.SqlQuery<v_smartpark_emp>(sb.ToString()).ToList();//
@@ -60,10 +62,11 @@ namespace FaceImageAPI.Repository.Repository
         public List<v_smartpark_emp> GetLeaveEmp()
         {
             StringBuilder sb = new StringBuilder();
+            sb.Append($@"select * from v_smartpark_emp
+                         where CONVERT(varchar(10),LDate,120) = '{NDate}'
+                         order by JDate");
             //sb.Append($@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
-            //             where CONVERT(varchar(10),LDate,120) = {NDate} ");
-            sb.Append($@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
-                         where EmpName = '陈乾乾' ");
+            //             where EmpName = '陈乾乾' ");
             using (var db = new DBContext())
             {
                 return db.Database.SqlQuery<v_smartpark_emp>(sb.ToString()).ToList();//
@@ -77,11 +80,12 @@ namespace FaceImageAPI.Repository.Repository
         public List<v_smartpark_emp> GetUpdateEmp()
         {
             StringBuilder sb = new StringBuilder();
-            //sb.Append($@"Select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp 
-            //                where CONVERT(varchar(10),UTime,120) = '{NDate}'
-            //                and FileData is not null    ");
-            sb.Append(@"Select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp 
-                        Where EmpName = '陈乾乾'");
+            sb.Append($@"Select * from v_smartpark_emp 
+                         where CONVERT(varchar(10),UTime,120) = '{NDate}'
+                         and FileData is not null and LDate is NULL
+                         order by JDate");
+            //sb.Append(@"Select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp 
+            //            Where EmpName in ('陈乾乾','赵毅')");
             using (var db = new DBContext())
             {
                 return db.Database.SqlQuery<v_smartpark_emp>(sb.ToString()).ToList();
@@ -113,8 +117,12 @@ namespace FaceImageAPI.Repository.Repository
             streamReader.Close();
 
             Root da = JsonConvert.DeserializeObject<Root>(result);
-            PhotosItem photoitem = da.data.FirstOrDefault().photos.FirstOrDefault();
-            return photoitem.subject_id.ToString();
+            if (da.page.count > 0)
+            {
+                PhotosItem photoitem = da.data.FirstOrDefault().photos.FirstOrDefault();
+                return photoitem.subject_id.ToString();
+            }
+            return null;
         }
     }
 }

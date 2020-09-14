@@ -29,8 +29,237 @@ namespace FaceImageAPI.Services.Service
         }
 
         #region 
+
         /// <summary>
-        /// Post方式创建用户并上传人脸库图片
+        /// 根据离职工号获取对应的subjectid集合
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="Token"></param>
+        /// <returns></returns>
+        public ArrayList GetSubListByLeavingEmpNo(string url, string Token)
+        {
+            ArrayList sublist = new ArrayList();
+            List<v_smartpark_emp> LEmplist = _StaffManagementRepository.GetLeaveEmp();
+            if (LEmplist != null && LEmplist.Count > 0)
+            {
+                foreach (v_smartpark_emp item in LEmplist)
+                {
+                    string subjectid = _StaffManagementRepository.GetSubjectID(url, Token, item.EmpNumber);
+                    if (subjectid != null && subjectid.Length > 0)
+                    {
+                        sublist.Add(subjectid);
+                    }
+                }
+            }
+            else
+            {
+                return null;
+            }
+            return sublist;
+        }
+
+        /// <summary>
+        /// 根据当天更新过资料的工号获取对应的subjectid集合和员工实体集合
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="Token"></param>
+        /// <returns></returns>
+        public void GetSubjectidandEmpNumber(string url, string Token, out ArrayList Usublist, out List<v_smartpark_emp> UEmplist)
+        {
+            string subjectid;
+            string CreateUserUrl = "http://10.170.3.75/subject/file";
+            //Usublist = null;
+            Usublist = new ArrayList();
+            UEmplist = _StaffManagementRepository.GetUpdateEmp();
+            if (UEmplist != null && UEmplist.Count > 0)
+            {
+                foreach (v_smartpark_emp item in UEmplist)
+                {
+                    subjectid = _StaffManagementRepository.GetSubjectID(url, Token, item.EmpNumber);
+                    if (subjectid != null && subjectid.Length > 0)
+                    {
+                        Usublist.Add(subjectid);
+                    }
+                    else if(item.LDate == null )
+                    {
+                        CreateUploadUser(CreateUserUrl,item,Token);
+                    }
+                }
+            }
+            else
+            {
+
+            }
+        }
+        #endregion
+
+        #region Excute Function
+
+        /// <summary>
+        /// 执行创建用户并上传图片至底库的方法 Before PRD
+        /// </summary>
+        /// <param name="CreateUserUrl"></param>
+        /// <param name="Token"></param>
+        /// <returns>ResposeResult</returns>
+        public string ExcutePostUpload(string CreateUserUrl, string Token)
+        {
+            string ResponseResult = string.Empty;
+            List<v_smartpark_emp> lst = _StaffManagementRepository.GetUserDataBeforePRD();
+            if (lst != null && lst.Count > 0)
+            {
+                foreach (v_smartpark_emp item in lst)
+                {
+                    Dictionary<string, object> dic = new Dictionary<string, object>();
+                    dic.Add("subject_type", "0");
+                    dic.Add("group_ids", "0");
+                    dic.Add("extra_id", item.EmpNumber);
+                    dic.Add("name", item.EmpName);
+
+                    Stream stream = new MemoryStream(item.FileData);
+                    Bitmap img = new Bitmap(stream);
+                    string FilePath = AppDomain.CurrentDomain.BaseDirectory + $@"\Photo\{item.EmpName}.jpg";
+                    img.Save(FilePath);
+                    string filepath = AppDomain.CurrentDomain.BaseDirectory + $@"\Photo\{item.EmpName}.jpg";
+                    ResponseResult = PostCreateUpLoadUser(CreateUserUrl, Token, 30000, "photo", filepath, dic);
+                }
+            }
+            return ResponseResult;
+        }
+
+        /// <summary>
+        /// 执行新增每天新入职员工的方法
+        /// </summary>
+        /// <param name="CreateEntryEmpUrl"></param>
+        /// <param name="Token"></param>
+        /// <returns></returns>
+        public string ExcutePostAddEntryEmp(string CreateEntryEmpUrl, string Token)
+        {
+            string ResponseResult = string.Empty;
+            List<v_smartpark_emp> lst = _StaffManagementRepository.GetEntryEmp();
+            if (lst != null && lst.Count > 0)
+            {
+                CreateUploadUser(CreateEntryEmpUrl, lst, Token);
+            }
+            else
+            {
+
+            }
+            return ResponseResult;
+        }
+
+        /// <summary>
+        /// 执行删除每天离职员工的方法
+        /// </summary>
+        /// <param name="DelLeaveEmpUrl"></param>
+        /// <param name="Token"></param>
+        /// <param name="subject_id"></param>
+        /// <returns></returns>
+        public string ExcutePostDelLeaveEmp(string DelLeaveEmpUrl, string Token, ArrayList sublist)
+        {
+            string result = string.Empty;
+            if (sublist != null && sublist.Count > 0)
+            {
+                foreach (string parameter in sublist)
+                {
+                    result = PostDeleteFunction(DelLeaveEmpUrl, Token, parameter);
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 执行更新每天资料变动的人员
+        /// </summary>
+        /// <param name="UpdateEmpUrl"></param>
+        /// <param name="Token"></param>
+        /// <param name="sublist"></param>
+        /// <returns></returns>
+        public string ExcutePostUpdateEmp(string UpdateEmpUrl, string CreateEntryEmpUrl, string Token, ArrayList sublist, List<v_smartpark_emp> EmpList)
+        {
+            //因缺少更新图片的接口  先删除 后新增
+            string result;
+            int i = 0;
+            if (sublist != null && sublist.Count > 0)
+            {
+                //先删除Subjectid人员
+                foreach (string parameter in sublist)
+                {
+                    result = PostDeleteFunction(UpdateEmpUrl, Token, parameter);
+                }
+            }
+            //新增相关人员
+            if (EmpList != null && EmpList.Count > 0)
+            {
+                CreateUploadUser(CreateEntryEmpUrl, EmpList, Token);
+            }
+            return "OK";
+        }
+
+        #endregion
+
+        #region Common
+        /// <summary>
+        /// 创建用户并上传底库图片 实体集合
+        /// </summary>
+        /// <param name="EmpList"></param>
+        /// <param name="url"></param>
+        /// <param name="Token"></param>
+        /// <param name="timeOut"></param>
+        /// <param name="FileName"></param>
+        /// <param name="FilePath"></param>
+        /// <param name="strdic"></param>
+        /// <returns></returns>
+        public string CreateUploadUser(string CreateEntryEmpUrl, List<v_smartpark_emp> EmpList, string Token)
+        {
+            string ResponseResult;
+            foreach (v_smartpark_emp item in EmpList)
+            {
+                Dictionary<string, object> dic = new Dictionary<string, object>();
+                dic.Add("subject_type", "0");
+                dic.Add("group_ids", "0");
+                dic.Add("extra_id", item.EmpNumber);
+                dic.Add("name", item.EmpName);
+
+                Stream stream = new MemoryStream(item.FileData);
+                Bitmap img = new Bitmap(stream);
+                string filepath = AppDomain.CurrentDomain.BaseDirectory + $@"\Photo\{item.EmpName}.jpg";
+                img.Save(filepath);
+                ResponseResult = PostCreateUpLoadUser(CreateEntryEmpUrl, Token, 30000, "photo", filepath, dic);
+            }
+            return "OK";
+        }
+
+        /// <summary>
+        /// 创建用户并上传底库图片 单个实体
+        /// </summary>
+        /// <param name="EmpList"></param>
+        /// <param name="url"></param>
+        /// <param name="Token"></param>
+        /// <param name="timeOut"></param>
+        /// <param name="FileName"></param>
+        /// <param name="FilePath"></param>
+        /// <param name="strdic"></param>
+        /// <returns></returns>
+        public string CreateUploadUser(string CreateEntryEmpUrl, v_smartpark_emp Emp, string Token)
+        {
+            string ResponseResult;
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("subject_type", "0");
+            dic.Add("group_ids", "0");
+            dic.Add("extra_id", Emp.EmpNumber);
+            dic.Add("name", Emp.EmpName);
+
+            Stream stream = new MemoryStream(Emp.FileData);
+            Bitmap img = new Bitmap(stream);
+            string filepath = AppDomain.CurrentDomain.BaseDirectory + $@"\Photo\{Emp.EmpName}.jpg";
+            img.Save(filepath);
+            ResponseResult = PostCreateUpLoadUser(CreateEntryEmpUrl, Token, 30000, "photo", filepath, dic);
+            return "OK";
+        }
+
+
+        /// <summary>
+        /// Post方式创建用户并上传人脸库图片 接口创建方法
         /// </summary>
         /// <param name="url">Server Address</param>
         /// <param name="Token">Token</param>
@@ -112,215 +341,31 @@ namespace FaceImageAPI.Services.Service
         }
 
         /// <summary>
-        /// 根据离职工号获取对应的subjectid集合
+        /// 接口删除方法
         /// </summary>
         /// <param name="url"></param>
         /// <param name="Token"></param>
+        /// <param name="parameter"></param>
         /// <returns></returns>
-        public ArrayList GetSubListByLeavingEmpNo(string url, string Token)
+        public string PostDeleteFunction(string url, string Token, string parameter)
         {
-            ArrayList sublist = new ArrayList();
-            List<v_smartpark_emp> LEmplist = _StaffManagementRepository.GetLeaveEmp();
-            if (LEmplist != null && LEmplist.Count > 0)
-            {
-                foreach (v_smartpark_emp item in LEmplist)
-                {
-                    string subjectid = _StaffManagementRepository.GetSubjectID(url, Token, item.EmpNumber);
-                    sublist.Add(subjectid);
-                }
-            }
-            else
-            {
-                return null;
-            }
-            return sublist;
-        }
+            string result;
+            url = url + int.Parse(parameter);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri(url));
+            request.Timeout = 20 * 1000;//设置30s的超时
+            request.ContentType = "application/x-www-form-urlencoded";
+            var Headers = request.Headers;
+            Headers["Authorization"] = Token;//Token认证
+            request.Method = "DELETE";
 
-        /// <summary>
-        /// 根据当天更新过资料的工号获取对应的subjectid集合
-        /// </summary>
-        /// <param name="url"></param>
-        /// <param name="Token"></param>
-        /// <returns></returns>
-        public ArrayList GetSubListByUpdatingEmpNo(string url, string Token)
-        {
-            ArrayList sublist = new ArrayList();
-            List<v_smartpark_emp> UEmplist = _StaffManagementRepository.GetUpdateEmp();
-            if (UEmplist != null && UEmplist.Count > 0)
-            {
-                foreach (v_smartpark_emp item in UEmplist)
-                {
-                    string subjectid = _StaffManagementRepository.GetSubjectID(url, Token, item.EmpNumber);
-                    sublist.Add(subjectid);
-                }
-            }
-            else
-            {
-                return null;
-            }
-            return sublist;
-
-        }
-        #endregion
-
-        #region Excute Function
-
-        /// <summary>
-        /// 执行创建用户并上传图片至底库的方法 Before PRD
-        /// </summary>
-        /// <param name="CreateUserUrl"></param>
-        /// <param name="Token"></param>
-        /// <returns>ResposeResult</returns>
-        public string ExcutePostUpload(string CreateUserUrl, string Token)
-        {
-            string ResponseResult = string.Empty;
-            List<v_smartpark_emp> lst = _StaffManagementRepository.GetUserDataBeforePRD();
-            if (lst != null && lst.Count > 0)
-            {
-                foreach (v_smartpark_emp item in lst)
-                {
-                    Dictionary<string, object> dic = new Dictionary<string, object>();
-                    dic.Add("subject_type", "0");
-                    dic.Add("group_ids", "0");
-                    dic.Add("extra_id", item.EmpNumber);
-                    dic.Add("name", item.EmpName);
-
-                    Stream stream = new MemoryStream(item.FileData);
-                    Bitmap img = new Bitmap(stream);
-                    string FilePath = AppDomain.CurrentDomain.BaseDirectory + $@"\Photo\{item.EmpName}.jpg";
-                    img.Save(FilePath);
-                    string filepath = AppDomain.CurrentDomain.BaseDirectory + $@"\Photo\{item.EmpName}.jpg";
-                    ResponseResult = PostCreateUpLoadUser(CreateUserUrl, Token, 30000, "photo", filepath, dic);
-                }
-            }
-            return ResponseResult;
-        }
-
-        /// <summary>
-        /// 执行新增每天新入职员工的方法
-        /// </summary>
-        /// <param name="CreateEntryEmpUrl"></param>
-        /// <param name="Token"></param>
-        /// <returns></returns>
-        public string ExcutePostAddEntryEmp(string CreateEntryEmpUrl, string Token)
-        {
-            string ResponseResult = string.Empty;
-            List<v_smartpark_emp> lst = _StaffManagementRepository.GetEntryEmp();
-            if (lst != null && lst.Count > 0)
-            {
-                foreach (v_smartpark_emp item in lst)
-                {
-                    Dictionary<string, object> dic = new Dictionary<string, object>();
-                    dic.Add("subject_type", "0");
-                    dic.Add("group_ids", "0");
-                    dic.Add("extra_id", item.EmpNumber);
-                    dic.Add("name", item.EmpName);
-
-                    Stream stream = new MemoryStream(item.FileData);
-                    Bitmap img = new Bitmap(stream);
-                    string FilePath = AppDomain.CurrentDomain.BaseDirectory + $@"\Photo\{item.EmpName}.jpg";
-                    img.Save(FilePath);
-                    string filepath = AppDomain.CurrentDomain.BaseDirectory + $@"\Photo\{item.EmpName}.jpg";
-                    ResponseResult = PostCreateUpLoadUser(CreateEntryEmpUrl, Token, 30000, "photo", filepath, dic);
-                }
-            }
-            else
-            {
-
-            }
-            return ResponseResult;
-        }
-
-        /// <summary>
-        /// 执行删除每天离职员工的方法
-        /// </summary>
-        /// <param name="DelLeaveEmpUrl"></param>
-        /// <param name="Token"></param>
-        /// <param name="subject_id"></param>
-        /// <returns></returns>
-        public string ExcutePostDelLeaveEmp(string DelLeaveEmpUrl, string Token, ArrayList sublist)
-        {
-            string result = string.Empty;
-            if (sublist != null && sublist.Count > 0)
-            {
-                foreach (string parameter in sublist)
-                {
-                    DelLeaveEmpUrl = DelLeaveEmpUrl + int.Parse(parameter);
-                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri(DelLeaveEmpUrl));
-                    request.Timeout = 20 * 1000;//设置30s的超时
-                    request.ContentType = "application/x-www-form-urlencoded";
-                    var Headers = request.Headers;
-                    Headers["Authorization"] = Token;//Token认证
-                    request.Method = "DELETE";
-
-                    HttpWebResponse httpWebResponse = (HttpWebResponse)request.GetResponse();
-                    StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream());
-                    result = streamReader.ReadToEnd();
-                    httpWebResponse.Close();
-                    streamReader.Close();
-                }
-            }
+            HttpWebResponse httpWebResponse = (HttpWebResponse)request.GetResponse();
+            StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream());
+            result = streamReader.ReadToEnd();
+            httpWebResponse.Close();
+            streamReader.Close();
             return result;
         }
 
-        /// <summary>
-        /// 执行更新每天资料变动的人员
-        /// </summary>
-        /// <param name="UpdateEmpUrl"></param>
-        /// <param name="Token"></param>
-        /// <param name="sublist"></param>
-        /// <returns></returns>
-        public string ExcutePostUpdateEmp(string UpdateEmpUrl, string Token, ArrayList sublist)
-        {
-            string result = string.Empty;
-            if (sublist != null && sublist.Count > 0)
-            {
-                foreach (string parameter in sublist)
-                {
-                    UpdateEmpUrl = UpdateEmpUrl + parameter;
-                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri(UpdateEmpUrl));
-                    request.Timeout = 20 * 1000;//设置30s的超时
-                    request.ContentType = "application/json";
-                    var Headers = request.Headers;
-                    Headers["Authorization"] = Token;//Token认证
-                    request.Method = "PUT";
-                    //var temp = new
-                    //{
-                    //    username = LoginID,
-                    //    password = Password,
-                    //    auth_token = true
-                    //};
-
-                    //var postData = JsonHelper.ObjectToString(temp);
-                    //byte[] data = Encoding.UTF8.GetBytes(postData);
-                    //request.ContentLength = data.Length;
-                    //Stream postStream = request.GetRequestStream();
-                    //postStream.Write(data, 0, data.Length);
-                    //using (var res = request.GetResponse() as HttpWebResponse)
-                    //{
-                    //    if (res.StatusCode == HttpStatusCode.OK)
-                    //    {
-                    //        StreamReader reader = new StreamReader(res.GetResponseStream(), Encoding.UTF8);
-                    //        result = reader.ReadToEnd();
-                    //        reader.Close();
-                    //    }
-                    //}
-                    //postStream.Close();
-                    //request.Abort();
-
-                    HttpWebResponse httpWebResponse = (HttpWebResponse)request.GetResponse();
-                    StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream());
-                    result = streamReader.ReadToEnd();
-                    httpWebResponse.Close();
-                    streamReader.Close();
-                }
-            }
-            return result;
-        }
-
-        #endregion
-
-        #region Common
         /// <summary>
         /// 16进制转byte[]类型
         /// </summary>

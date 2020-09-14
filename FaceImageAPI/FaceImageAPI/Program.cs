@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using FaceImageAPI.Entity;
 using FaceImageAPI.Ioc;
 using FaceImageAPI.Services.IService;
 using System;
@@ -16,7 +17,6 @@ namespace FaceImageAPI
         static void Main(string[] args)
         {
             ArrayList Lsublist = new ArrayList();
-            ArrayList Usublist = new ArrayList();
             string Token = string.Empty;
 
             #region Declare Parameter
@@ -51,21 +51,22 @@ namespace FaceImageAPI
             #endregion
 
             #region Update
-            ////Update 执行更新每天资料变动的人员
-            //Usublist = StaffManagementService.GetSubListByUpdatingEmpNo(GetSubjectIDUrl, Token);//更新过资料的人员集合
-            //if (Usublist != null && Usublist.Count > 0)
-            //{
-            //    StaffManagementService.ExcutePostUpdateEmp(UpdateEmpUrl, Token, Usublist);
-            //}
+            //Update 执行更新每天资料变动的人员
+            StaffManagementService.GetSubjectidandEmpNumber(GetSubjectIDUrl, Token, out ArrayList Usublist, out List<v_smartpark_emp> EmpList);//更新过资料的人员集合
+            if (Usublist != null && Usublist.Count > 0)
+            {
+                StaffManagementService.ExcutePostUpdateEmp(UpdateEmpUrl, CreateUserUrl, Token, Usublist, EmpList);
+            }
             #endregion
 
             #region Delete 
-            ////Delete 执行删除每天离职员工的方法
-            //Lsublist = StaffManagementService.GetSubListByLeavingEmpNo(GetSubjectIDUrl, Token);//离职人员集合
+            //Delete 执行删除每天离职员工的方法
+            Lsublist = StaffManagementService.GetSubListByLeavingEmpNo(GetSubjectIDUrl, Token);//离职人员集合
             //if (Lsublist.Count > 0 && Lsublist != null)
-            //{
-            //    StaffManagementService.ExcutePostDelLeaveEmp(DelLeaveEmpUrl, Token, Lsublist);
-            //}
+            if (Lsublist != null)
+            {
+                StaffManagementService.ExcutePostDelLeaveEmp(DelLeaveEmpUrl, Token, Lsublist);
+            }
             #endregion
 
         }
