@@ -52,6 +52,10 @@
     <Compile Include="Service\StaffManagementService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FaceImageAPI.Domain\FaceImageAPI.Domain.csproj">
+      <Project>{3CD3EB13-202A-4DC1-8AA4-FF594017295B}</Project>
+      <Name>FaceImageAPI.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FaceImageAPI.Entity\FaceImageAPI.Entity.csproj">
       <Project>{A81A10E9-810C-4969-AD3D-3E1CADD041BD}</Project>
       <Name>FaceImageAPI.Entity</Name>

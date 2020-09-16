@@ -33,4 +33,3 @@ D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Do
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.csproj.CopyComplete
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.pdb
-D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.csprojAssemblyReference.cache

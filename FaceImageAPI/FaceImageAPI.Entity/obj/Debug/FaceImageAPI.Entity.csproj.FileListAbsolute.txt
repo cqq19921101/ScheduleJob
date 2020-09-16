@@ -14,4 +14,3 @@ D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Entity\bin\Debug\FaceImageAPI.En
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Entity\obj\Debug\FaceImageAPI.Entity.csproj.CoreCompileInputs.cache
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Entity\obj\Debug\FaceImageAPI.Entity.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Entity\obj\Debug\FaceImageAPI.Entity.pdb
-D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Entity\obj\Debug\FaceImageAPI.Entity.csprojAssemblyReference.cache

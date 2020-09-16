@@ -1,4 +1,10 @@
-﻿namespace FaceImageAPI.Services.IService
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FaceImageAPI.Services.IService
 {
     /// <summary>
     /// 权限管理接口

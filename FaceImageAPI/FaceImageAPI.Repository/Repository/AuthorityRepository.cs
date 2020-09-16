@@ -3,9 +3,12 @@ using FaceImageAPI.Entity;
 using FaceImageAPI.Repository.IRepository;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace FaceImageAPI.Repository.Repository
 {

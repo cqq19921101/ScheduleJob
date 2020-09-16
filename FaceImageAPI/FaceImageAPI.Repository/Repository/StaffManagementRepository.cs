@@ -42,12 +42,12 @@ namespace FaceImageAPI.Repository.Repository
         public List<v_smartpark_emp> GetEntryEmp()
         {
             StringBuilder sb = new StringBuilder();
-            //sb.Append($@"select  * from v_smartpark_emp
-            //             where CONVERT(varchar(10),JDate,120) = '{NDate}'
-            //             and FileData is not null and LDate is NULL
-            //             order by JDate");
-            sb.Append($@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
-                            where EmpName = '陈乾乾'");
+            sb.Append($@"select  * from v_smartpark_emp
+                         where CONVERT(varchar(10),JDate,120) = '{NDate}'
+                         and FileData is not null and LDate is NULL
+                         order by JDate");
+            //sb.Append($@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
+            //                where EmpName in ('陈乾乾','何洋华')");
             using (var db = new DBContext())
             {
                 return db.Database.SqlQuery<v_smartpark_emp>(sb.ToString()).ToList();//

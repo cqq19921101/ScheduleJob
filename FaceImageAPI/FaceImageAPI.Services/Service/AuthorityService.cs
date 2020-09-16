@@ -1,5 +1,10 @@
 ﻿using FaceImageAPI.Repository.IRepository;
 using FaceImageAPI.Services.IService;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace FaceImageAPI.Services.Service
 {

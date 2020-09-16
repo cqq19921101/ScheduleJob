@@ -1,4 +1,5 @@
-﻿using FaceImageAPI.Entity;
+﻿using FaceImageAPI.Domain.Helper;
+using FaceImageAPI.Entity;
 using FaceImageAPI.Repository.IRepository;
 using FaceImageAPI.Services.IService;
 using Newtonsoft.Json;
@@ -164,7 +165,6 @@ namespace FaceImageAPI.Services.Service
         {
             //因缺少更新图片的接口  先删除 后新增
             string result;
-            int i = 0;
             if (sublist != null && sublist.Count > 0)
             {
                 //先删除Subjectid人员
@@ -213,9 +213,10 @@ namespace FaceImageAPI.Services.Service
                 ResponseResult = PostCreateUpLoadUser(CreateEntryEmpUrl, Token, 30000, "photo", filepath, dic);
 
                 ExceptionEntity.Root da = JsonConvert.DeserializeObject<ExceptionEntity.Root>(ResponseResult);
-                if (da.desc.Length > 0)
+                if (da.desc != null && da.desc.Length > 0)
                 {
                     //Write Exception log
+                    LogHelper.WriteErrorLog($"工号 : {item.EmpNumber} 姓名 ：{item.EmpName} 异常信息 ： {da.desc}");
                 }
 
             }
@@ -248,13 +249,12 @@ namespace FaceImageAPI.Services.Service
             img.Save(filepath);
             ResponseResult = PostCreateUpLoadUser(CreateEntryEmpUrl, Token, 30000, "photo", filepath, dic);
 
-            //ExceptionEntity.Root da = JsonConvert.DeserializeObject<ExceptionEntity.Root>(ResponseResult);
-            //if (da.desc.Length > 0)
-            //{
-            //    PhotosItem photoitem = da.data.FirstOrDefault().photos.FirstOrDefault();
-            //    return photoitem.subject_id.ToString();
-            //}
-
+            ExceptionEntity.Root da = JsonConvert.DeserializeObject<ExceptionEntity.Root>(ResponseResult);
+            if (da.desc != null && da.desc.Length > 0 )
+            {
+                //Write Exception Log
+                LogHelper.WriteErrorLog($"工号 : {Emp.EmpNumber} 姓名 ：{Emp.EmpName} 异常信息 ： {da.desc}");
+            }
             return "OK";
         }
 

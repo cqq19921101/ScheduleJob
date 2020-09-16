@@ -56,6 +56,8 @@
     <Compile Include="DB\DBContext.cs" />
     <Compile Include="Helper\JsonHelper.cs" />
     <Compile Include="Helper\LogHelper.cs" />
+    <Compile Include="Helper\StringHelper.cs" />
+    <Compile Include="Helper\TypeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
