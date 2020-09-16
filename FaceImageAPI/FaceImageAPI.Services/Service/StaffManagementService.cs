@@ -1,6 +1,7 @@
 ﻿using FaceImageAPI.Entity;
 using FaceImageAPI.Repository.IRepository;
 using FaceImageAPI.Services.IService;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +10,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FaceImageAPI.Services.Service
 {
@@ -107,21 +107,7 @@ namespace FaceImageAPI.Services.Service
             List<v_smartpark_emp> lst = _StaffManagementRepository.GetUserDataBeforePRD();
             if (lst != null && lst.Count > 0)
             {
-                foreach (v_smartpark_emp item in lst)
-                {
-                    Dictionary<string, object> dic = new Dictionary<string, object>();
-                    dic.Add("subject_type", "0");
-                    dic.Add("group_ids", "0");
-                    dic.Add("extra_id", item.EmpNumber);
-                    dic.Add("name", item.EmpName);
-
-                    Stream stream = new MemoryStream(item.FileData);
-                    Bitmap img = new Bitmap(stream);
-                    string FilePath = AppDomain.CurrentDomain.BaseDirectory + $@"\Photo\{item.EmpName}.jpg";
-                    img.Save(FilePath);
-                    string filepath = AppDomain.CurrentDomain.BaseDirectory + $@"\Photo\{item.EmpName}.jpg";
-                    ResponseResult = PostCreateUpLoadUser(CreateUserUrl, Token, 30000, "photo", filepath, dic);
-                }
+                CreateUploadUser(CreateUserUrl, lst, Token);
             }
             return ResponseResult;
         }
@@ -225,6 +211,13 @@ namespace FaceImageAPI.Services.Service
                 string filepath = AppDomain.CurrentDomain.BaseDirectory + $@"\Photo\{item.EmpName}.jpg";
                 img.Save(filepath);
                 ResponseResult = PostCreateUpLoadUser(CreateEntryEmpUrl, Token, 30000, "photo", filepath, dic);
+
+                ExceptionEntity.Root da = JsonConvert.DeserializeObject<ExceptionEntity.Root>(ResponseResult);
+                if (da.desc.Length > 0)
+                {
+                    //Write Exception log
+                }
+
             }
             return "OK";
         }
@@ -254,6 +247,14 @@ namespace FaceImageAPI.Services.Service
             string filepath = AppDomain.CurrentDomain.BaseDirectory + $@"\Photo\{Emp.EmpName}.jpg";
             img.Save(filepath);
             ResponseResult = PostCreateUpLoadUser(CreateEntryEmpUrl, Token, 30000, "photo", filepath, dic);
+
+            //ExceptionEntity.Root da = JsonConvert.DeserializeObject<ExceptionEntity.Root>(ResponseResult);
+            //if (da.desc.Length > 0)
+            //{
+            //    PhotosItem photoitem = da.data.FirstOrDefault().photos.FirstOrDefault();
+            //    return photoitem.subject_id.ToString();
+            //}
+
             return "OK";
         }
 

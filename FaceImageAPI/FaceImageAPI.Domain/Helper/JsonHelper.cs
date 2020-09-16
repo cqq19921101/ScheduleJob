@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 
-namespace FaceImageAPI.Repository.Helper
+namespace FaceImageAPI.Domain.Helper
 {
     /// <summary>
     /// JsonHelperfc

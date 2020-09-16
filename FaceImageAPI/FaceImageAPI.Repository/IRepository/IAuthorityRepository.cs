@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FaceImageAPI.Repository.IRepository
+﻿namespace FaceImageAPI.Repository.IRepository
 {
     /// <summary>
     /// 权限管理仓储接口

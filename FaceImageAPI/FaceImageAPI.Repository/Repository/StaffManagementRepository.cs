@@ -8,7 +8,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FaceImageAPI.Repository.Repository
 {
@@ -26,7 +25,7 @@ namespace FaceImageAPI.Repository.Repository
         public List<v_smartpark_emp> GetUserDataBeforePRD()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(@"select * from v_smartpark_emp
+            sb.Append(@"select EmpNumber,EmpName,JDate,LDate,FileData,UTime from v_smartpark_emp
                         where LDate IS NULL and FileData IS Not Null 
                         order by JDate");
             //and EmpName = '陈乾乾'
@@ -43,12 +42,12 @@ namespace FaceImageAPI.Repository.Repository
         public List<v_smartpark_emp> GetEntryEmp()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($@"select  * from v_smartpark_emp
-                         where CONVERT(varchar(10),JDate,120) = '{NDate}'
-                         and FileData is not null and LDate is NULL
-                         order by JDate");
-            //sb.Append($@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
-            //                where EmpName = '陈乾乾'");
+            //sb.Append($@"select  * from v_smartpark_emp
+            //             where CONVERT(varchar(10),JDate,120) = '{NDate}'
+            //             and FileData is not null and LDate is NULL
+            //             order by JDate");
+            sb.Append($@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
+                            where EmpName = '陈乾乾'");
             using (var db = new DBContext())
             {
                 return db.Database.SqlQuery<v_smartpark_emp>(sb.ToString()).ToList();//

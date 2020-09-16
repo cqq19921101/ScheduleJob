@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExceptionEntity.cs" />
     <Compile Include="JsonEntity.cs" />
     <Compile Include="PostEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

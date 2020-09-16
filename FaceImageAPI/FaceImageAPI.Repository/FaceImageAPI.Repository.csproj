@@ -55,7 +55,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helper\JsonHelper.cs" />
     <Compile Include="IRepository\IAuthorityRepository.cs" />
     <Compile Include="IRepository\IStaffManagementRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

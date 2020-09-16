@@ -22,3 +22,15 @@ D:\Desktop\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.csproj
 D:\Desktop\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.pdb
 D:\Desktop\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.csprojAssemblyReference.cache
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\FaceImageAPI.Domain.dll.config
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\FaceImageAPI.Domain.dll
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\FaceImageAPI.Domain.pdb
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\EntityFramework.dll
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\EntityFramework.SqlServer.dll
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\EntityFramework.xml
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\EntityFramework.SqlServer.xml
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.csproj.CoreCompileInputs.cache
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.csproj.CopyComplete
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.dll
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.pdb
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.csprojAssemblyReference.cache

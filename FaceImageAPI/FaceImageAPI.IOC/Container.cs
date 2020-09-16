@@ -3,11 +3,6 @@ using FaceImageAPI.Repository.IRepository;
 using FaceImageAPI.Repository.Repository;
 using FaceImageAPI.Services.IService;
 using FaceImageAPI.Services.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FaceImageAPI.Ioc
 {
