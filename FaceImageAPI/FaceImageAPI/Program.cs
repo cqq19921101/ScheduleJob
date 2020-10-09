@@ -30,6 +30,7 @@ namespace FaceImageAPI
             #region Ioc Init
             //初始化Ioc容器
             Container.Init();
+
             //Ioc 注入
             IAuthorityService AuthorityService = Container.Instance.Resolve<IAuthorityService>();
             IStaffManagementService StaffManagementService = Container.Instance.Resolve<IStaffManagementService>();
@@ -45,25 +46,25 @@ namespace FaceImageAPI
             //StaffManagementService.ExcutePostUpload(CreateUserUrl, Token);
 
             //Add 执行新增每天新入职员工的方法
-            StaffManagementService.ExcutePostAddEntryEmp(CreateUserUrl, Token);
+            //StaffManagementService.ExcutePostAddEntryEmp(CreateUserUrl, Token);
             #endregion
 
             #region Update
             //Update 执行更新每天资料变动的人员
-            StaffManagementService.GetSubjectidandEmpNumber(GetSubjectIDUrl, Token, out ArrayList Usublist, out List<v_smartpark_emp> EmpList);//更新过资料的人员集合
-            if (Usublist != null && Usublist.Count > 0)
-            {
-                StaffManagementService.ExcutePostUpdateEmp(UpdateEmpUrl, CreateUserUrl, Token, Usublist, EmpList);
-            }
+            //StaffManagementService.GetSubjectidandEmpNumber(GetSubjectIDUrl, Token, out ArrayList Usublist, out List<v_smartpark_emp> EmpList);//更新过资料的人员集合
+            //if (Usublist != null && Usublist.Count > 0)
+            //{
+            //    StaffManagementService.ExcutePostUpdateEmp(UpdateEmpUrl, CreateUserUrl, Token, Usublist, EmpList);
+            //}
             #endregion
 
             #region Delete 
             //Delete 执行删除每天离职员工的方法
-            Lsublist = StaffManagementService.GetSubListByLeavingEmpNo(GetSubjectIDUrl, Token);//离职人员集合
-            if (Lsublist != null)
-            {
-                StaffManagementService.ExcutePostDelLeaveEmp(DelLeaveEmpUrl, Token, Lsublist);
-            }
+            //Lsublist = StaffManagementService.GetSubListByLeavingEmpNo(GetSubjectIDUrl, Token);//离职人员集合
+            //if (Lsublist != null)
+            //{
+            //    StaffManagementService.ExcutePostDelLeaveEmp(DelLeaveEmpUrl, Token, Lsublist);
+            //}
             #endregion
 
         }

@@ -392,3 +392,14 @@ D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI\obj\Debug\FaceImageAPI.csproj.Co
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI\obj\Debug\FaceImageAPI.csproj.CopyComplete
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI\obj\Debug\FaceImageAPI.exe
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI\obj\Debug\FaceImageAPI.pdb
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI\bin\Debug\Castle.Core.dll
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI\bin\Debug\Autofac.Extras.DynamicProxy.dll
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI\bin\Debug\FaceImageAPI.Ioc.dll.config
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI\bin\Debug\FaceImageAPI.Services.dll.config
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI\bin\Debug\Castle.Core.xml
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI\bin\Debug\Autofac.Extras.DynamicProxy.pdb
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI\bin\Debug\Autofac.Extras.DynamicProxy.xml
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml

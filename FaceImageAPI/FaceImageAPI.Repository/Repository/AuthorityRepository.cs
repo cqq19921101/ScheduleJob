@@ -1,4 +1,6 @@
-﻿using FaceImageAPI.Domain.Helper;
+﻿using Autofac.Extras.DynamicProxy;
+using FaceImageAPI.Domain.AOP;
+using FaceImageAPI.Domain.Helper;
 using FaceImageAPI.Entity;
 using FaceImageAPI.Repository.IRepository;
 using Newtonsoft.Json;
@@ -15,6 +17,7 @@ namespace FaceImageAPI.Repository.Repository
     /// <summary>
     /// 权限管理仓储接口实现
     /// </summary>
+    //[Intercept(typeof(ExceptionLogInterceptor))]
     public class AuthorityRepository : IAuthorityRepository
     {
         /// <summary>

@@ -1,8 +1,12 @@
 ﻿using Autofac;
+using Autofac.Extras.DynamicProxy;
+using Castle.DynamicProxy;
+using FaceImageAPI.Domain.AOP;
 using FaceImageAPI.Repository.IRepository;
 using FaceImageAPI.Repository.Repository;
 using FaceImageAPI.Services.IService;
 using FaceImageAPI.Services.Service;
+using System.Reflection;
 
 namespace FaceImageAPI.Ioc
 {
@@ -39,10 +43,15 @@ namespace FaceImageAPI.Ioc
             //权限管理注入
             builder.RegisterType<AuthorityRepository>().As<IAuthorityRepository>();
             builder.RegisterType<AuthorityService>().As<IAuthorityService>();
+            builder.RegisterType(typeof(ExceptionLogInterceptor));
 
             //员工管理注入
             builder.RegisterType<StaffManagementRepository>().As<IStaffManagementRepository>();
             builder.RegisterType<StaffManagementService>().As<IStaffManagementService>();
+
+
+            ////Aop 拦截器注入
+            //builder.RegisterType<ExceptionLogInterceptor>();//注册拦截器
 
         }
     }

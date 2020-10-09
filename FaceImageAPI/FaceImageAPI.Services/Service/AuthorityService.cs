@@ -1,4 +1,6 @@
-﻿using FaceImageAPI.Repository.IRepository;
+﻿using Autofac.Extras.DynamicProxy;
+using FaceImageAPI.Domain.AOP;
+using FaceImageAPI.Repository.IRepository;
 using FaceImageAPI.Services.IService;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,7 @@ namespace FaceImageAPI.Services.Service
     /// <summary>
     /// 权限管理服务
     /// </summary>
+    //[Intercept(typeof(ExceptionLogInterceptor))]
     public class AuthorityService : IAuthorityService
     {
         private readonly IAuthorityRepository _AuthorityRepository;
