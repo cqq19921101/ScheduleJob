@@ -380,10 +380,10 @@ D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Ioc\bin\Debug\FaceImageAPI.Ioc.d
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Ioc\bin\Debug\Castle.Core.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Ioc\bin\Debug\Autofac.Extras.DynamicProxy.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Ioc\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
-D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Ioc\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Ioc\bin\Debug\FaceImageAPI.Services.dll.config
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Ioc\bin\Debug\Castle.Core.xml
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Ioc\bin\Debug\Autofac.Extras.DynamicProxy.pdb
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Ioc\bin\Debug\Autofac.Extras.DynamicProxy.xml
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Ioc\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
-D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Ioc\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Ioc\bin\Debug\NLog.dll
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Ioc\bin\Debug\NLog.xml

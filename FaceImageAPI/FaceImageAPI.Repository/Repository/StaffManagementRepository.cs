@@ -36,14 +36,14 @@ namespace FaceImageAPI.Repository.Repository
         }
 
         /// <summary>
-        /// 抓取当天的入职员工
+        /// 抓取三天内的入职员工
         /// </summary>
         /// <returns></returns>
         public List<v_smartpark_emp> GetEntryEmp()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append($@"select  * from v_smartpark_emp
-                         where CONVERT(varchar(10),JDate,120) = '{NDate}'
+                         where DateDiff(dd,JDate,getdate()) <= 1
                          and FileData is not null and LDate is NULL
                          order by JDate");
             //sb.Append($@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
@@ -55,17 +55,15 @@ namespace FaceImageAPI.Repository.Repository
         }
 
         /// <summary>
-        /// 抓取当天的离职员工
+        /// 抓取10天内的离职员工
         /// </summary>
         /// <returns></returns>
         public List<v_smartpark_emp> GetLeaveEmp()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append($@"select * from v_smartpark_emp
-                         where CONVERT(varchar(10),LDate,120) = '{NDate}'
+                         where DateDiff(dd, LDATE, GetDate()) <= 10 and FileData is  not  NULL
                          order by JDate");
-            //sb.Append($@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
-            //             where EmpName = '陈乾乾' ");
             using (var db = new DBContext())
             {
                 return db.Database.SqlQuery<v_smartpark_emp>(sb.ToString()).ToList();//

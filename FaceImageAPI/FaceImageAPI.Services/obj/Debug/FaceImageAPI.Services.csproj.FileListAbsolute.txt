@@ -159,7 +159,6 @@ D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\Microsoft.Bcl
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\System.Threading.Tasks.Extensions.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
-D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\Autofac.pdb
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\Autofac.xml
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\Autofac.Extras.DynamicProxy.pdb
@@ -169,4 +168,5 @@ D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\Microsoft.Bcl
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
-D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\NLog.dll
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\NLog.xml

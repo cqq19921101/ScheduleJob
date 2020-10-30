@@ -57,11 +57,9 @@ D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Repository\obj\Debug\FaceImageAP
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Repository\obj\Debug\FaceImageAPI.Repository.pdb
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\Castle.Core.dll
-D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\netstandard.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\Castle.Core.xml
-D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\Microsoft.Win32.Primitives.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\System.AppContext.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\System.Collections.Concurrent.dll
@@ -169,3 +167,5 @@ D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\Autofac.Ext
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\NLog.dll
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Repository\bin\Debug\NLog.xml

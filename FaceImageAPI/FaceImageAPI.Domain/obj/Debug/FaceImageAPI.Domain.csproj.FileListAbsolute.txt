@@ -34,9 +34,7 @@ D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Do
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.pdb
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\Castle.Core.dll
-D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\log4net.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\Castle.Core.xml
-D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\log4net.xml
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\Microsoft.Win32.Primitives.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\netstandard.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\System.AppContext.dll
@@ -147,3 +145,6 @@ D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\System.Buffers.
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\System.Memory.xml
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\System.Numerics.Vectors.xml
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\NLog.dll
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Debug\NLog.xml
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\obj\Debug\FaceImageAPI.Domain.csprojAssemblyReference.cache
