@@ -37,34 +37,43 @@ namespace FaceImageAPI
             #endregion
 
             #region Get Token
+            Console.WriteLine("Get Token Start!");
             //获取Token
             Token = AuthorityService.GetToken(TokenUrl, LoginId, LoginPsd);
+            Console.WriteLine("Get Token End!");
             #endregion
 
             #region Insert
-            //Add 执行创建用户并上传图片至底库的方法 Before PRD
+            Console.WriteLine("Insert Function Start!");
+
             //StaffManagementService.ExcutePostUpload(CreateUserUrl, Token);
 
-            //Add 执行新增每天新入职员工的方法
             StaffManagementService.ExcutePostAddEntryEmp(CreateUserUrl, Token);
+            Console.WriteLine("Insert Function End!");
+
             #endregion
 
             #region Update
-            //Update 执行更新每天资料变动的人员
+            Console.WriteLine("Update Function Start!");
             StaffManagementService.GetSubjectidandEmpNumber(GetSubjectIDUrl, Token, out ArrayList Usublist, out List<v_smartpark_emp> EmpList);//更新过资料的人员集合
+            Console.WriteLine($"当天更新人脸数据的人数" + Usublist.Count.ToString());
             if (Usublist != null && Usublist.Count > 0)
             {
                 StaffManagementService.ExcutePostUpdateEmp(UpdateEmpUrl, CreateUserUrl, Token, Usublist, EmpList);
             }
+            Console.WriteLine("Update Function End!");
             #endregion
 
             #region Delete 
-            //Delete 执行删除每天离职员工的方法
+            Console.WriteLine("Delete Function Start!");
+            //Delete 执行删除离职员工的方法
             Lsublist = StaffManagementService.GetSubListByLeavingEmpNo(GetSubjectIDUrl, Token);//离职人员集合
+            Console.WriteLine($"近三月离职的人数" + Lsublist.Count.ToString());
             if (Lsublist != null)
             {
                 StaffManagementService.ExcutePostDelLeaveEmp(DelLeaveEmpUrl, Token, Lsublist);
             }
+            Console.WriteLine("Delete Function End!");
             #endregion
 
         }

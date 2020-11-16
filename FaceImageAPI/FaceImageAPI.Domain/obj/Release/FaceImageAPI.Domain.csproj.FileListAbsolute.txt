@@ -1,3 +1,4 @@
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Release\System.Runtime.Serialization.Formatters.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Release\FaceImageAPI.Domain.dll.config
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Release\FaceImageAPI.Domain.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Release\FaceImageAPI.Domain.pdb
@@ -68,7 +69,6 @@ D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Release\System.Runtim
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Release\System.Runtime.InteropServices.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Release\System.Runtime.InteropServices.RuntimeInformation.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Release\System.Runtime.Numerics.dll
-D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Release\System.Runtime.Serialization.Formatters.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Release\System.Runtime.Serialization.Json.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Release\System.Runtime.Serialization.Primitives.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\bin\Release\System.Runtime.Serialization.Xml.dll
@@ -123,3 +123,4 @@ D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\obj\Release\FaceImageAPI.
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\obj\Release\FaceImageAPI.Domain.csproj.CopyComplete
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\obj\Release\FaceImageAPI.Domain.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\obj\Release\FaceImageAPI.Domain.pdb
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Domain\obj\Release\FaceImageAPI.Domain.csprojAssemblyReference.cache

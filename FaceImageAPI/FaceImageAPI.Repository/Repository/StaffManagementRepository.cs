@@ -62,7 +62,7 @@ namespace FaceImageAPI.Repository.Repository
         {
             StringBuilder sb = new StringBuilder();
             sb.Append($@"select * from v_smartpark_emp
-                         where DateDiff(dd, LDATE, GetDate()) <= 10 and FileData is  not  NULL
+                         where DateDiff(dd, LDATE, GetDate()) <= 90 and FileData is  not  NULL
                          order by JDate");
             using (var db = new DBContext())
             {
