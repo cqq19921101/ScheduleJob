@@ -36,7 +36,6 @@ D:\Desktop\FaceImageAPI\FaceImageAPI.Services\bin\Debug\EntityFramework.xml
 D:\Desktop\FaceImageAPI\FaceImageAPI.Services\obj\Debug\FaceImageAPI.Services.csproj.CopyComplete
 D:\Desktop\FaceImageAPI\FaceImageAPI.Services\obj\Debug\FaceImageAPI.Services.dll
 D:\Desktop\FaceImageAPI\FaceImageAPI.Services\obj\Debug\FaceImageAPI.Services.pdb
-D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\System.Threading.ThreadPool.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\FaceImageAPI.Services.dll.config
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\FaceImageAPI.Services.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\FaceImageAPI.Services.pdb
@@ -127,6 +126,7 @@ D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\System.Thread
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\System.Threading.Tasks.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\System.Threading.Tasks.Parallel.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\System.Threading.Thread.dll
+D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\System.Threading.ThreadPool.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\System.Threading.Timer.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\System.ValueTuple.dll
 D:\Github\ScheduleJob\FaceImageAPI\FaceImageAPI.Services\bin\Debug\System.Xml.ReaderWriter.dll

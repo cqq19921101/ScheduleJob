@@ -215,8 +215,13 @@ namespace FaceImageAPI.Services.Service
                 ExceptionEntity.Root da = JsonConvert.DeserializeObject<ExceptionEntity.Root>(ResponseResult);
                 if (da.desc != null && da.desc.Length > 0)
                 {
-                    //Write Exception log
-                    LogHelper.WriteErrorLog($"工号 : {item.EmpNumber} 姓名 ：{item.EmpName} 异常信息 ： {da.desc}");
+                    if (da.desc != "唯一标识重复")
+                    {
+                        string ErrprPhoto = AppDomain.CurrentDomain.BaseDirectory + $@"\ErrorPhoto\{item.EmpName}.jpg";
+                        img.Save(ErrprPhoto);
+                        //Write Exception log
+                        LogHelper.WriteErrorLog($"工号 : {item.EmpNumber} 姓名 ：{item.EmpName} 异常信息 ： {da.desc}");
+                    }
                 }
 
             }

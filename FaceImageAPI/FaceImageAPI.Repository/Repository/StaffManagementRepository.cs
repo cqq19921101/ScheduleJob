@@ -28,7 +28,6 @@ namespace FaceImageAPI.Repository.Repository
             sb.Append(@"select EmpNumber,EmpName,JDate,LDate,FileData,UTime from v_smartpark_emp
                         where LDate IS NULL and FileData IS Not Null 
                         order by JDate");
-            //and EmpName = '陈乾乾'
             using (var db = new DBContext())
             {
                 return db.Database.SqlQuery<v_smartpark_emp>(sb.ToString()).ToList();//
@@ -43,11 +42,9 @@ namespace FaceImageAPI.Repository.Repository
         {
             StringBuilder sb = new StringBuilder();
             sb.Append($@"select  * from v_smartpark_emp
-                         where DateDiff(dd,JDate,getdate()) <= 1
+                         where DateDiff(dd,JDate,getdate()) <= 20
                          and FileData is not null and LDate is NULL
                          order by JDate");
-            //sb.Append($@"select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp
-            //                where EmpName in ('陈乾乾','何洋华')");
             using (var db = new DBContext())
             {
                 return db.Database.SqlQuery<v_smartpark_emp>(sb.ToString()).ToList();//
@@ -81,8 +78,6 @@ namespace FaceImageAPI.Repository.Repository
                          where CONVERT(varchar(10),UTime,120) = '{NDate}'
                          and FileData is not null and LDate is NULL
                          order by JDate");
-            //sb.Append(@"Select  EmpNumber,EmpName,JDate,FileData from v_smartpark_emp 
-            //            Where EmpName in ('陈乾乾','赵毅')");
             using (var db = new DBContext())
             {
                 return db.Database.SqlQuery<v_smartpark_emp>(sb.ToString()).ToList();
